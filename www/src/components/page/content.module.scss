@@ -1,0 +1,44 @@
+.content {
+  @apply mt-4;
+  h2 {
+    @apply text-2xl text-title font-serif;
+  }
+  h3 {
+    @apply text-xl text-title;
+  }
+  h4 {
+    @apply text-xl;
+  }
+  h2, h3, h4 {
+    @apply mb-1;
+  }
+  p, ul, ol {
+    @apply mb-5;
+  }
+  ol, ul {
+    @apply ml-8 mr-5;
+  }
+  ul {
+    @apply list-disc;
+  }
+  ol {
+    @apply list-decimal;
+  }
+  :not(pre) > code {
+    @apply text-body-background-light bg-title rounded-sm;
+    padding: 0.1rem;
+  }
+  pre {
+    @apply float-left min-w-full rounded;
+  }
+  :global {
+    .gatsby-highlight {
+      @apply overflow-x-auto mb-5;
+    }
+    .gatsby-highlight-code-line {
+      @apply block border-l-2 border-title py-1;
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+

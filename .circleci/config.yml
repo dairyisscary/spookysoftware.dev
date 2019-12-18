@@ -1,0 +1,141 @@
+version: 2.1
+
+commands:
+  checkout_monorepo:
+    description: Checkout the git mono repo with a standard root
+    steps:
+      - checkout:
+          path: /home/circleci/spookysofware.dev
+
+  attach_made_workspace:
+    description: Attach workspace generated files from another job
+    steps:
+      - attach_workspace:
+          at: /home/circleci/spookysofware.dev
+
+executors:
+  default_www_node_env:
+    docker:
+      - image: circleci/node:12.14.1
+    working_directory: /home/circleci/spookysofware.dev/www
+
+jobs:
+  build_www_working_directory:
+    executor: default_www_node_env
+    steps:
+      - checkout_monorepo
+
+      - restore_cache:
+          name: Restoring node_modules
+          keys:
+            - node_modules-packages-{{ checksum "yarn.lock" }}
+            - node_modules-packages
+      - run:
+          name: Installing NPM Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Caching node_modules
+          key: node_modules-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+      - persist_to_workspace:
+          root: "../"
+          paths:
+            - www
+
+  fmt_www:
+    executor: default_www_node_env
+    steps:
+      - attach_made_workspace
+      - run:
+          name: Checking Formatting
+          command: yarn run format --check
+
+  typecheck_www:
+    executor: default_www_node_env
+    steps:
+      - attach_made_workspace
+      - run:
+          name: Type checking
+          command: yarn run tsc
+
+  build_www_static_html:
+    executor: default_www_node_env
+    steps:
+      - attach_made_workspace
+      - run:
+          name: Building
+          command: rm -rf .cache public && yarn run build
+      - persist_to_workspace:
+          root: "../"
+          paths:
+            - www/public
+
+  deploy_infrastructure:
+    docker:
+      - image: dairyisscary/terraform:0.12.20
+    working_directory: /home/circleci/spookysofware.dev/infra
+    steps:
+      - checkout_monorepo
+      - run:
+          name: Initing Terraform
+          command: terraform init
+      - run:
+          name: Forming Infrastructure
+          command: |
+            mkdir -p output
+            terraform apply -auto-approve
+            terraform output -json > output/terraform.json
+      - persist_to_workspace:
+          root: "../"
+          paths:
+            - infra/output
+
+  deploy_www_upload:
+    docker:
+      - image: dairyisscary/awscli:1.14.36
+    steps:
+      - attach_made_workspace
+      - run:
+          name: Uploading to S3 Bucket
+          command: |
+            cd /home/circleci/spookysofware.dev/www
+            BUCKET_NAME=$(cat ../infra/output/terraform.json | jq '.www_static_bucket_name.value' -r) bash bin/upload-to-s3.sh
+      - run:
+          name: Invalidating Cloudfront
+          command: |
+            cd /home/circleci/spookysofware.dev
+            aws cloudfront create-invalidation \
+              --distribution-id $(\
+                 cat infra/output/terraform.json | \
+                 jq '.www_cdn_id.value' -r \
+              ) \
+              --paths '/*'
+
+workflows:
+  version: 2
+  "Check and Deploy":
+    jobs:
+      - build_www_working_directory
+      - deploy_infrastructure:
+          filters:
+            branches:
+              only: production
+      - fmt_www:
+          requires:
+            - build_www_working_directory
+      - typecheck_www:
+          requires:
+            - build_www_working_directory
+      - build_www_static_html:
+          requires:
+            - typecheck_www
+            - fmt_www
+      - deploy_www_upload:
+          requires:
+            - deploy_infrastructure
+            - build_www_static_html
+          filters:
+            branches:
+              only: production
