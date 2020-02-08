@@ -1,6 +1,6 @@
 ---
 title: Hello World
-date: "2020-01-28T00:15:03.870Z"
+date: 2020-01-28T00:15:03.870Z
 ---
 
 Hello world!
