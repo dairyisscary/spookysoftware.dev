@@ -6,7 +6,7 @@
   "license": "MIT",
   "volta": {
     "node": "12.14.1",
-    "yarn": "1.21.1"
+    "yarn": "1.22.0"
   },
   "scripts": {
     "build": "gatsby build",
@@ -16,32 +16,30 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@babel/core": "^7.7.5",
-    "gatsby": "^2.18.12",
-    "gatsby-image": "^2.2.34",
-    "gatsby-plugin-feed": "^2.3.26",
-    "gatsby-plugin-manifest": "^2.2.31",
+    "@babel/core": "^7.8.4",
+    "gatsby": "^2.19.12",
+    "gatsby-plugin-feed": "^2.3.27",
     "gatsby-plugin-purgecss": "^4.0.1",
-    "gatsby-plugin-react-helmet": "^3.1.16",
+    "gatsby-plugin-react-helmet": "^3.1.22",
     "gatsby-plugin-root-import": "^2.0.5",
-    "gatsby-plugin-sass": "^2.1.26",
-    "gatsby-plugin-typescript": "^2.1.23",
-    "gatsby-remark-prismjs": "^3.3.30",
-    "gatsby-remark-smartypants": "^2.1.20",
-    "gatsby-source-filesystem": "^2.1.46",
-    "gatsby-transformer-remark": "^2.6.48",
-    "node-sass": "^4.13.0",
+    "gatsby-plugin-sass": "^2.1.28",
+    "gatsby-plugin-typescript": "^2.1.27",
+    "gatsby-remark-prismjs": "^3.3.31",
+    "gatsby-remark-smartypants": "^2.1.21",
+    "gatsby-source-filesystem": "^2.1.48",
+    "gatsby-transformer-remark": "^2.6.50",
+    "node-sass": "^4.13.1",
     "prismjs": "^1.19.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "tailwindcss": "^1.1.4"
+    "tailwindcss": "^1.2.0"
   },
   "devDependencies": {
-    "@types/react": "^16.9.16",
+    "@types/react": "^16.9.19",
     "@types/react-helmet": "^5.0.15",
     "@types/vfile-message": "^1.0.1",
     "prettier": "^1.19.1",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.5"
   }
 }
