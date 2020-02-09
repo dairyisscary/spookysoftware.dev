@@ -9,7 +9,7 @@ function Intro() {
         Hi, I'm Eric. I'm a software engineer, and this is where I complain.
       </h4>
       <p>
-        This blog explores the crazy blend of Ethics, software, and shit we call
+        This blog explores the crazy blend of ethics, software, and shit we call
         technology.
       </p>
     </div>
