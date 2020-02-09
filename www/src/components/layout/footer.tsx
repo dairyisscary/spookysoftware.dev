@@ -18,7 +18,7 @@ function Footer() {
           love.
         </div>
       </div>
-      <div className="flex items-center w-24">
+      <div className="flex items-center w-32">
         <NewTabLink href="/rss.xml" className="flex-1 mr-4">
           <svg
             enable-background="new 0 0 24 24"
@@ -55,7 +55,7 @@ function Footer() {
         </NewTabLink>
         <NewTabLink
           href="https://www.youtube.com/channel/UCuRHr-1aqro-UWcz36hkdoQ/"
-          className="flex-1"
+          className="flex-1 mr-4"
         >
           <svg
             role="img"
@@ -66,6 +66,27 @@ function Footer() {
             <path
               className="fill-current"
               d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"
+            />
+          </svg>
+        </NewTabLink>
+        <NewTabLink href="https://mixer.com/dairyisscary" className="flex-1">
+          <svg
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <title>Mixer</title>
+            <path
+              className="fill-current"
+              d="M116.03,77.68c-15.76-21.29-46.72-24.61-66.91-6.36c-17.42,16.04-18.8,43.13-4.7,62.21l90.96,121.92
+	          L43.87,378.48c-14.1,19.08-12.99,46.17,4.7,62.21c20.18,18.25,51.15,14.93,66.91-6.36l127.73-171.69c3.04-4.15,3.04-9.95,0-14.1
+	          L116.03,77.68z"
+            />
+            <path
+              className="fill-current"
+              d="M396.37,77.68c15.76-21.29,46.72-24.61,66.91-6.36c17.42,16.04,18.8,43.13,4.7,62.21l-90.96,121.92
+	          l91.51,123.03c14.1,19.08,12.99,46.17-4.7,62.21c-20.18,18.25-51.15,14.93-66.91-6.36L269.47,262.36c-3.04-4.15-3.04-9.95,0-14.1
+	          L396.37,77.68z"
             />
           </svg>
         </NewTabLink>
