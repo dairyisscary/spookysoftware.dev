@@ -3,11 +3,23 @@ title: Hello World
 date: "2020-01-28T00:15:03.870Z"
 ---
 
-We've done it. Welcome to the end of blogging as we know it.
+Hello world!
 
 ```rust
 fn main() {
-  let hello = "Hello";
-  println!("{} world!", hello);
+  println!("Hello world!");
 }
+```
+
+```haskell
+main :: IO ()
+main = putStrLn "Hello world!"
+```
+
+```typescript
+console.log("Hello world!");
+```
+
+```elixir
+IO.puts("Hello world!")
 ```
