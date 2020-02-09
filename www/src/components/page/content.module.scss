@@ -1,5 +1,8 @@
 .content {
   @apply mt-4;
+  blockquote {
+    @apply pl-4 border-title border-solid border-l-4 italic;
+  }
   h2 {
     @apply text-2xl text-title font-serif;
   }
