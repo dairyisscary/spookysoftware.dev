@@ -21,7 +21,6 @@ function Footer() {
       <div className="flex items-center w-32">
         <NewTabLink href="/rss.xml" className="flex-1 mr-4">
           <svg
-            enable-background="new 0 0 24 24"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
