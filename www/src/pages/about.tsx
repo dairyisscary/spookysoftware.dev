@@ -24,15 +24,15 @@ function About() {
             Fuchsia
           </span>
           . As an adult, card-carrying Software Engineer {yearsSince2007} years
-          later, I'm still trying to get that same high.
+          later, I&#39;m still trying to get that same high.
         </p>
         <p>
           I have worked for the last {yearsSince2014} years at a few web-SaaS{" "}
           <NewTabLink href="https://www.shoobx.com/">software</NewTabLink>{" "}
           <NewTabLink href="https://www.notarize.com/">startups</NewTabLink>{" "}
           writing code that only just barely makes the thing work. In my
-          defense, isn’t that really what engineering is -- making the cheapest
-          solution that still works?
+          defense, isn&#39;t that really what engineering is -- making the
+          cheapest solution that still works?
         </p>
         <p>
           These days I have been thinking more about educational content for the
@@ -55,10 +55,24 @@ function About() {
           </li>
           <li>
             <a href="https://github.com/dairyisscary/spookysoftware.dev">
-              This Website's Source Code
+              This Website&#39;s Source Code
             </a>
           </li>
         </ul>
+        <h3>About This Website&#39;s Technology</h3>
+        <p>
+          This website is designed to be fast and accessible, utilizing{" "}
+          <a href="https://www.gatsbyjs.org">Gatsby</a>. You can always find the
+          source code on{" "}
+          <a href="https://github.com/dairyisscary/spookysoftware.dev">
+            GitHub
+          </a>
+          . It uses privacy-conscious, cookie-free{" "}
+          <a href="https://usefathom.com">analytics</a> that respect Do Not
+          Track. Please consider whitelisting this website from your
+          adblocker/DNT so that I can properly use this anonymous data to make
+          better content.
+        </p>
       </PageContent>
     </Layout>
   );

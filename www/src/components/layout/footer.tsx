@@ -13,9 +13,8 @@ function Footer() {
           Built with{" "}
           <NewTabLink href="https://github.com/dairyisscary/spookysoftware.dev">
             open-source
-          </NewTabLink>
-          , <NewTabLink href="https://www.gatsbyjs.org">Gatsby</NewTabLink>, and
-          love.
+          </NewTabLink>{" "}
+          and love.
         </div>
       </div>
       <div className="flex items-center w-32">
