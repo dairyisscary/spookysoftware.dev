@@ -8,7 +8,7 @@ function NotFoundPage() {
     <Layout title="404: Not Found">
       <PageTitle>404 - That means not found, homie.</PageTitle>
       <p>
-        You just hit a route that doesn&#39;t exist... where'd you get this
+        You just hit a route that doesn&#39;t exist... where did you get this
         link?
       </p>
     </Layout>
