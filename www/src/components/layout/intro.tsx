@@ -6,7 +6,8 @@ function Intro() {
   return (
     <div className="mb-16">
       <h4 className={`${Styles.main} font-serif text-highlight text-3xl`}>
-        Hi, I'm Eric. I'm a software engineer, and this is where I complain.
+        Hi, I'm Eric. I'm a software engineer, and this is where I write my
+        complaints.
       </h4>
       <p>
         This blog explores the crazy blend of ethics, software, and shit we call
