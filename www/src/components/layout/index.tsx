@@ -75,7 +75,7 @@ function Layout({ title, children, description, includeIntro }: Props) {
     : siteMetadata.title;
   const metaDesc = description || siteMetadata.description;
   return (
-    <div className="flex flex-col mx-auto max-w-3xl">
+    <div className="flex flex-col mx-auto max-w-4xl">
       <Helmet
         htmlAttributes={{ lang: "en-US" }}
         title={metaTitle}

@@ -30,7 +30,7 @@ function IndexPage({ data }: Props) {
   return (
     <Layout includeIntro>
       {posts.map(({ node }) => (
-        <div key={node.id} className="mb-10">
+        <div key={node.id} className="mb-20">
           <PageTitle>
             <Link className="no-underline" to={node.fields.slug}>
               {node.frontmatter.title}
