@@ -54,7 +54,10 @@ module.exports = {
         develop: false,
         tailwind: true,
         keyframes: false,
-        ignore: ["/node_modules/prismjs/"],
+        ignore: [
+          "/node_modules/prismjs/",
+          "/src/components/page/content.module.scss",
+        ],
       },
     },
     {
