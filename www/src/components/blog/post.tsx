@@ -19,12 +19,13 @@ type Props = {
 };
 
 function Post({ data }: Props) {
-  const post = data.markdownRemark;
+  const { frontmatter, html } = data.markdownRemark;
+  const { title, date } = frontmatter;
   return (
-    <Layout>
-      <PageTitle>{post.frontmatter.title}</PageTitle>
-      <BlogDate>{post.frontmatter.date}</BlogDate>
-      <BlogContent>{post.html}</BlogContent>
+    <Layout title={title}>
+      <PageTitle>{title}</PageTitle>
+      <BlogDate>{date}</BlogDate>
+      <BlogContent>{html}</BlogContent>
     </Layout>
   );
 }
