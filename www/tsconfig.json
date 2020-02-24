@@ -11,8 +11,7 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "noEmit": true,
-    "incremental": true
+    "noEmit": true
   },
   "include": ["./src/"]
 }
