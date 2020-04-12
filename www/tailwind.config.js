@@ -1,4 +1,5 @@
 module.exports = {
+  purge: false,
   theme: {
     fontFamily: {
       cursive: ["Amatic SC", "cursive"],

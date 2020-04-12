@@ -4,7 +4,11 @@
 
 body {
   @apply bg-body-background-dark font-sans min-h-screen text-primary;
-  background: linear-gradient(45deg, theme("colors.body-background-dark"), theme("colors.body-background-light"));
+  background: linear-gradient(
+    45deg,
+    theme("colors.body-background-dark"),
+    theme("colors.body-background-light")
+  );
 }
 
 a {

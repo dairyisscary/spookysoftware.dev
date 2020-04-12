@@ -12,13 +12,18 @@
   h4 {
     @apply text-xl;
   }
-  h2, h3, h4 {
+  h2,
+  h3,
+  h4 {
     @apply mb-1;
   }
-  p, ul, ol {
+  p,
+  ul,
+  ol {
     @apply mb-5;
   }
-  ol, ul {
+  ol,
+  ul {
     @apply ml-8 mr-5;
   }
   ul {
@@ -44,4 +49,3 @@
     }
   }
 }
-
