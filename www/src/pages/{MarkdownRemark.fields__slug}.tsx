@@ -33,8 +33,8 @@ function Post({ data }: Props) {
 export default Post;
 
 export const query = graphql`
-  query GetPost($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query BlogPostById($id: String!) {
+    markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
         title
