@@ -4,4 +4,4 @@ This repo houses all the code for the [Spooky Software](https://www.spookysoftwa
 
 ## Sub Projects
 
-- Blog [www](https://github.com/dairyisscary/spookysoftware.dev/tree/master/www)
+- Blog [www](https://github.com/dairyisscary/spookysoftware.dev/tree/main/www)
