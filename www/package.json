@@ -5,8 +5,8 @@
   "author": "Eric Butler <idealeric@gmail.com>",
   "license": "MIT",
   "volta": {
-    "node": "12.14.1",
-    "yarn": "1.22.0"
+    "node": "14.15.0",
+    "yarn": "1.22.10"
   },
   "scripts": {
     "build": "gatsby build",
