@@ -74,7 +74,7 @@ jobs:
 
   deploy_infrastructure:
     docker:
-      - image: dairyisscary/terraform:0.12.20
+      - image: dairyisscary/terraform:0.13.5
     working_directory: /home/circleci/spookysofware.dev/infra
     steps:
       - checkout_monorepo

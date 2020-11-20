@@ -4,6 +4,12 @@ terraform {
     key    = "spookysoftware/terraform.tfstate"
     region = "us-east-1"
   }
+
+  required_providers {
+    aws = {
+      version = "~> 3.12"
+    }
+  }
 }
 
 locals {
@@ -12,7 +18,6 @@ locals {
 
 provider "aws" {
   region  = "us-east-1"
-  version = "~> 2.46"
 }
 
 resource "aws_route53_zone" "root" {
