@@ -16,12 +16,9 @@ resource "aws_acm_certificate" "main_cert" {
   }
 }
 
-resource "aws_acm_certificate_validation" "main_cert" {
-  certificate_arn = aws_acm_certificate.main_cert.arn
-  validation_record_fqdns = [
-    aws_route53_record.main_cert_root_validation.fqdn,
-    aws_route53_record.main_cert_www_validation.fqdn
-  ]
+resource "aws_acm_certificate_validation" "main_cert_all" {
+  certificate_arn         = aws_acm_certificate.main_cert.arn
+  validation_record_fqdns = [for record in aws_route53_record.main_cert_validation : record.fqdn]
 
   lifecycle {
     create_before_destroy = true
@@ -155,7 +152,7 @@ resource "aws_cloudfront_distribution" "root_website_cdn" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate_validation.main_cert.certificate_arn
+    acm_certificate_arn      = aws_acm_certificate_validation.main_cert_all.certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }
@@ -217,7 +214,7 @@ resource "aws_cloudfront_distribution" "www_website_cdn" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate_validation.main_cert.certificate_arn
+    acm_certificate_arn      = aws_acm_certificate_validation.main_cert_all.certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }
@@ -279,18 +276,18 @@ resource "aws_route53_record" "cdn_alias_aaaa_www_domain" {
   }
 }
 
-resource "aws_route53_record" "main_cert_root_validation" {
-  zone_id = var.root_dns_zone_id
-  name    = aws_acm_certificate.main_cert.domain_validation_options.0.resource_record_name
-  type    = aws_acm_certificate.main_cert.domain_validation_options.0.resource_record_type
-  records = [aws_acm_certificate.main_cert.domain_validation_options.0.resource_record_value]
-  ttl     = 60
-}
+resource "aws_route53_record" "main_cert_validation" {
+  for_each = {
+    for dvo in aws_acm_certificate.main_cert.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+  }
 
-resource "aws_route53_record" "main_cert_www_validation" {
   zone_id = var.root_dns_zone_id
-  name    = aws_acm_certificate.main_cert.domain_validation_options.1.resource_record_name
-  type    = aws_acm_certificate.main_cert.domain_validation_options.1.resource_record_type
-  records = [aws_acm_certificate.main_cert.domain_validation_options.1.resource_record_value]
+  name    = each.value.name
+  type    = each.value.type
+  records = [each.value.record]
   ttl     = 60
 }
