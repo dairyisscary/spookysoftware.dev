@@ -57,6 +57,9 @@ jobs:
     steps:
       - attach_made_workspace
       - run:
+          name: Creating scss module defintions
+          command: yarn run tsm src
+      - run:
           name: Type checking
           command: yarn run tsc
 
