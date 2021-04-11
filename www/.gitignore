@@ -1,6 +1,8 @@
 yarn-debug.log*
 yarn-error.log*
 
+*.module.scss.d.ts
+
 node_modules/
 .cache/
 public/

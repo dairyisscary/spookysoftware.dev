@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 
-import Styles from "./header.module.scss";
+import { siteTitle } from "./header.module.scss";
 
 function Header() {
   const data = useStaticQuery(graphql`
@@ -16,7 +16,7 @@ function Header() {
   return (
     <header className="flex justify-between items-center py-4 mb-16">
       <h1
-        className={`${Styles.siteTitle} tracking-widest font-bold font-cursive text-4xl text-highlight`}
+        className={`${siteTitle} tracking-widest font-bold font-cursive text-4xl text-highlight`}
       >
         <Link className="no-underline" to="/">
           {data.site.siteMetadata.title}
