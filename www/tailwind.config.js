@@ -3,8 +3,14 @@ module.exports = {
   theme: {
     fontFamily: {
       cursive: ["Amatic SC", "cursive"],
-      sans: ["Ubuntu", "sans-serif"],
-      serif: ["Merriweather", "serif"],
+      serif: [
+        "Merriweather",
+        "ui-serif",
+        "Georgia",
+        "Cambria",
+        "Times",
+        "serif",
+      ],
     },
     extend: {
       colors: {

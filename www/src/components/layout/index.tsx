@@ -87,7 +87,11 @@ function Layout({ title, children, description, includeIntro }: Props) {
       >
         <link href={Favicon64} rel="shorcut icon" />
         <link
-          href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Merriweather|Ubuntu&display=swap"
+          href="https://fonts.googleapis.com/css?family=Merriweather&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Amatic+SC:700&text=Spooky+Software&display=swap"
           rel="stylesheet"
         />
       </Helmet>

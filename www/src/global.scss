@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-body-background-dark font-sans min-h-screen text-primary;
+  @apply bg-body-background-dark min-h-screen text-primary;
   background: linear-gradient(
     45deg,
     theme("colors.body-background-dark"),
