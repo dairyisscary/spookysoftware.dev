@@ -86,9 +86,11 @@ function Layout({ title, children, description, includeIntro }: Props) {
         })}
       >
         <link href={Favicon64} rel="shorcut icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
-          href="https://fonts.googleapis.com/css?family=Merriweather&display=swap"
-          rel="stylesheet"
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
         />
         <link
           href="https://fonts.googleapis.com/css?family=Amatic+SC:700&text=Spooky+Software&display=swap"

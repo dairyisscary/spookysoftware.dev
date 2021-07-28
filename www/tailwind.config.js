@@ -1,18 +1,10 @@
 module.exports = {
   purge: false,
   theme: {
-    fontFamily: {
-      cursive: ["Amatic SC", "cursive"],
-      serif: [
-        "Merriweather",
-        "ui-serif",
-        "Georgia",
-        "Cambria",
-        "Times",
-        "serif",
-      ],
-    },
     extend: {
+      fontFamily: {
+        cursive: ["Amatic SC", "cursive"],
+      },
       colors: {
         "body-background-light": "#49436B",
         "body-background-dark": "#402F51",
