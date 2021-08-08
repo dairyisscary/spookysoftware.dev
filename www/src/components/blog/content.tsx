@@ -1,5 +1,3 @@
-import React from "react";
-
 import PageContent from "@/components/page/content";
 
 function BlogContent({ children }: { children: string }) {

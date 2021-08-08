@@ -1,5 +1,3 @@
-import React from "react";
-
 import NewTabLink from "@/components/new-tab-link";
 
 function Footer() {

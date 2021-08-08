@@ -1,4 +1,4 @@
-import React from "react";
+import type { ReactNode } from "react";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
@@ -8,7 +8,7 @@ import Footer from "./footer";
 import Intro from "./intro";
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
   title?: string;
   description?: string;
   includeIntro?: boolean;

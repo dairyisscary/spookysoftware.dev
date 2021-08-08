@@ -1,9 +1,6 @@
-import React from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-type Props = Omit<
-  React.PropsWithoutRef<JSX.IntrinsicElements["a"]>,
-  "rel" | "target"
->;
+type Props = Omit<ComponentPropsWithoutRef<"a">, "rel" | "target">;
 
 function NewTabLink(props: Props) {
   return <a {...props} rel="noopener noreferrer" target="_blank" />;

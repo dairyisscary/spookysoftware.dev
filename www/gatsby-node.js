@@ -10,3 +10,10 @@ exports.onCreateNode = function ({ node, actions, getNode }) {
     actions.createNodeField({ node, value: `/blog${value}`, name: "slug" });
   }
 };
+
+exports.onCreateBabelConfig = function ({ actions }) {
+  actions.setBabelPlugin({
+    name: "@babel/plugin-transform-react-jsx",
+    options: { runtime: "automatic" },
+  });
+};

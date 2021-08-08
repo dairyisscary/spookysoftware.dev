@@ -1,5 +1,3 @@
-import React from "react";
-
 import { main } from "./intro.module.scss";
 
 function Intro() {

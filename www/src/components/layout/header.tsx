@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 
 import { siteTitle } from "./header.module.scss";
