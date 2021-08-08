@@ -12,7 +12,8 @@ type Props = {
       html: string;
       frontmatter: {
         title: string;
-        date: string;
+        publishDate: string;
+        modifiedDate: string;
       };
     };
   };
@@ -20,11 +21,11 @@ type Props = {
 
 function Post({ data }: Props) {
   const { frontmatter, html } = data.markdownRemark;
-  const { title, date } = frontmatter;
+  const { title, publishDate, modifiedDate } = frontmatter;
   return (
     <Layout title={title}>
       <PageTitle>{title}</PageTitle>
-      <BlogDate>{date}</BlogDate>
+      <BlogDate publishDate={publishDate} modifiedDate={modifiedDate} />
       <BlogContent>{html}</BlogContent>
     </Layout>
   );
@@ -38,7 +39,8 @@ export const query = graphql`
       html
       frontmatter {
         title
-        date(formatString: "YYYY-MM-DD")
+        publishDate(formatString: "YYYY-MM-DD")
+        modifiedDate(formatString: "YYYY-MM-DD")
       }
     }
   }

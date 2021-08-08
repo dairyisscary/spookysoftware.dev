@@ -11,7 +11,8 @@ type Post = {
   excerpt: string;
   frontmatter: {
     title: string;
-    date: string;
+    publishDate: string;
+    modifiedDate: string;
   };
   fields: {
     slug: string;
@@ -36,7 +37,10 @@ function IndexPage({ data }: Props) {
               {node.frontmatter.title}
             </Link>
           </PageTitle>
-          <BlogDate>{node.frontmatter.date}</BlogDate>
+          <BlogDate
+            publishDate={node.frontmatter.publishDate}
+            modifiedDate={node.frontmatter.modifiedDate}
+          />
           <BlogContent>{node.excerpt}</BlogContent>
           <Link className="block mt-4" to={node.fields.slug}>
             Read More...
@@ -51,14 +55,17 @@ export default IndexPage;
 
 export const query = graphql`
   query MainPage {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___publishDate], order: DESC }
+    ) {
       totalCount
       edges {
         node {
           id
           frontmatter {
             title
-            date(formatString: "YYYY-MM-DD")
+            publishDate(formatString: "YYYY-MM-DD")
+            modifiedDate(formatString: "YYYY-MM-DD")
           }
           fields {
             slug

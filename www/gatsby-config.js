@@ -89,7 +89,7 @@ module.exports = {
             query: `
               query GetFeedPosts {
                 allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
+                  sort: { order: DESC, fields: [frontmatter___publishDate] },
                 ) {
                   edges {
                     node {
@@ -98,7 +98,7 @@ module.exports = {
                       fields { slug }
                       frontmatter {
                         title
-                        date
+                        publishDate
                       }
                     }
                   }

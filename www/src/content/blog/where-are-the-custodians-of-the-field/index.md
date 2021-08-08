@@ -1,6 +1,7 @@
 ---
 title: Where Are the Custodians of the Field?
-date: 2020-02-10T00:00:00Z
+publishDate: 2020-02-10T00:00:00Z
+modifiedDate: 2020-02-10T00:00:00Z
 ---
 
 > If software abstraction actually worked the way people pretend, then the "higher-level" you go, the more insulated you would be from
