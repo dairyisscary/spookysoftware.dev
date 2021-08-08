@@ -1,7 +1,7 @@
 ---
 title: Where Are the Custodians of the Field?
 publishDate: 2020-02-10T00:00:00Z
-modifiedDate: 2020-02-10T00:00:00Z
+modifiedDate: 2021-08-08T00:00:00Z
 ---
 
 > If software abstraction actually worked the way people pretend, then the "higher-level" you go, the more insulated you would be from
@@ -96,7 +96,7 @@ demands of businesses and users that we have stopped meaningfully criticizing th
 Blow identifies it, we are only "pretending" that these high-level tools are meeting those demands. Constraints and insulation are useful,
 but I think we are hiding the wrong details.
 
-Approachabilty has been a driving force for a good number of the efforts I'm criticizing, and I'm not criticizing approachabilty itself as
+Approachability has been a driving force for a good number of the efforts I'm criticizing, and I'm not criticizing approachability itself as
 a valuable goal. Relatedly, I don't want to discount the real, ethical issue here of how we make tools and programming languages more open
 and inclusive because we do need to think about how to empower _all_ engineers. In the past, I've seen two approaches to improving
 inclusivity in programming language usage, neither of which I've been satisfied with. The first purports that inclusivity can be
