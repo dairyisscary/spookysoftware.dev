@@ -4,11 +4,12 @@ import NewTabLink from "@/components/new-tab-link";
 
 function Footer() {
   const thisYear = new Date().getFullYear();
-  const extra = thisYear > 2019 ? `-${thisYear}` : null;
+  const start = 2019;
+  const extra = thisYear > start ? `${start}-${thisYear}` : start;
   return (
     <footer className="flex items-center mb-8">
       <div className="flex-1 text-sm pr-4">
-        <div>&copy; Eric Butler 2019{extra}</div>
+        <div>&copy; Eric Kim-Butler {extra}</div>
         <div>
           Built with{" "}
           <NewTabLink href="https://github.com/dairyisscary/spookysoftware.dev">

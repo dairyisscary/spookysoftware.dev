@@ -2,7 +2,7 @@
   "name": "www.spookysoftware.dev",
   "private": true,
   "version": "1.0.0",
-  "author": "Eric Butler <idealeric@gmail.com>",
+  "author": "Eric Kim-Butler <eric@kimbutler.xyz>",
   "license": "MIT",
   "volta": {
     "node": "14.15.0",

@@ -7,8 +7,8 @@ const SITE_URL = "https://www.spookysoftware.dev";
 module.exports = {
   siteMetadata: {
     title: TITLE,
-    description: "Personal website and blog of Eric Butler",
-    author: "Eric Butler",
+    description: "Personal website and blog of Eric Kim-Butler",
+    author: "Eric Kim-Butler",
     siteUrl: SITE_URL,
   },
   plugins: [
