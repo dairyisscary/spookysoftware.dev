@@ -8,6 +8,7 @@ import BlogContent from "@/components/blog/content";
 type Post = {
   id: string;
   excerpt: string;
+  html: string;
   frontmatter: {
     title: string;
     publishDate: string;
@@ -41,9 +42,11 @@ function IndexPage({ data }: Props) {
             modifiedDate={node.frontmatter.modifiedDate}
           />
           <BlogContent>{node.excerpt}</BlogContent>
-          <Link className="block mt-4" to={node.fields.slug}>
-            Read More...
-          </Link>
+          {node.excerpt !== node.html && (
+            <Link className="block mt-4" to={node.fields.slug}>
+              Read More...
+            </Link>
+          )}
         </div>
       ))}
     </Layout>
@@ -69,6 +72,7 @@ export const query = graphql`
           fields {
             slug
           }
+          html
           excerpt(pruneLength: 400, format: HTML)
         }
       }

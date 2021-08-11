@@ -17,6 +17,8 @@ of features, capabilities, and robustness, is at a low point. All the while, the
 is just continuing to grow. I think that, instead, we should be taking a step back and reevaluating our return on
 investment.
 
+<!-- endexcerpt -->
+
 Dropbox just announced that they are now [type-checking 4 million lines of Python][dropbox_type_check] because
 refactoring that much code is, they claim, too hard without it. Why does Dropbox need [4 million lines][million_lines]
 of code in the first place? And, this isn't even all the code that Dropbox maintains, just the Python bits. Similarly,
