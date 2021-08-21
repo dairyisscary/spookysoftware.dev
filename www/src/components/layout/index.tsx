@@ -74,6 +74,8 @@ function Layout({ title, children, description, includeIntro }: Props) {
     ? `${title} | ${siteMetadata.title}`
     : siteMetadata.title;
   const metaDesc = description || siteMetadata.description;
+  const fontHref =
+    "https://fonts.googleapis.com/css?family=Amatic+SC:700&text=Spooky+Software&display=swap";
   return (
     <div className="flex flex-col mx-auto max-w-4xl">
       <Helmet
@@ -86,16 +88,20 @@ function Layout({ title, children, description, includeIntro }: Props) {
         })}
       >
         <link href={Favicon64} rel="shorcut icon" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
+        <link rel="preload" as="style" href={fontHref} />
         <link
-          href="https://fonts.googleapis.com/css?family=Amatic+SC:700&text=Spooky+Software&display=swap"
+          href={fontHref}
+          media="print"
+          // @ts-expect-error
+          onLoad="this.onload=null;this.removeAttribute('media');"
           rel="stylesheet"
         />
+        <noscript>{`<link href="${fontHref}" rel="stylesheet" />`}</noscript>
       </Helmet>
       <div className="px-5">
         <Header />
