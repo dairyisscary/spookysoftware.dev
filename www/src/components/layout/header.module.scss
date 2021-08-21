@@ -2,6 +2,13 @@
   animation: flicker 6s infinite alternate;
 }
 
+@media (prefers-reduced-motion) {
+  .siteTitle {
+    animation: none;
+    text-shadow: 0 0 8px theme("colors.highlight");
+  }
+}
+
 @keyframes flicker {
   0%,
   19.999%,

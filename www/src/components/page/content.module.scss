@@ -1,5 +1,5 @@
 .content {
-  @apply mt-4;
+  @apply mt-4 leading-relaxed;
   blockquote {
     @apply ml-0 pl-4 border-title border-solid border-l-4 italic;
   }
@@ -10,17 +10,17 @@
     @apply text-xl text-title;
   }
   h4 {
-    @apply text-xl;
+    @apply text-title;
   }
   h2,
   h3,
   h4 {
-    @apply mb-1;
+    @apply mb-2;
   }
   p,
   ul,
   ol {
-    @apply mb-5;
+    @apply mb-6;
   }
   ol,
   ul {
@@ -33,11 +33,10 @@
     @apply list-decimal;
   }
   :not(pre) > code {
-    @apply text-body-background-light bg-title rounded-sm;
-    padding: 0.1rem;
+    @apply text-body-background-light bg-title rounded-sm p-0.5;
   }
   pre {
-    @apply float-left min-w-full rounded;
+    @apply float-left min-w-full rounded border border-primary border-opacity-30;
   }
   :global {
     .gatsby-highlight {

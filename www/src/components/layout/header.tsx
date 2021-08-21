@@ -22,9 +22,7 @@ function Header() {
         </Link>
       </h1>
       <nav className="flex">
-        <Link className="no-underline" to="/about/">
-          About
-        </Link>
+        <Link to="/about/">About</Link>
       </nav>
     </header>
   );
