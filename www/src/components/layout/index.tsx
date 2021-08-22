@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
-import Favicon64 from "@/images/favicon-64.png";
 import Header from "./header";
 import Footer from "./footer";
 import Intro from "./intro";
@@ -74,35 +73,16 @@ function Layout({ title, children, description, includeIntro }: Props) {
     ? `${title} | ${siteMetadata.title}`
     : siteMetadata.title;
   const metaDesc = description || siteMetadata.description;
-  const fontHref =
-    "https://fonts.googleapis.com/css?family=Amatic+SC:700&text=Spooky+Software&display=swap";
   return (
     <div className="flex flex-col mx-auto max-w-4xl">
       <Helmet
-        htmlAttributes={{ lang: "en-US" }}
         title={metaTitle}
         meta={getMeta({
           title: metaTitle,
           description: metaDesc,
           author: siteMetadata.author,
         })}
-      >
-        <link href={Favicon64} rel="shorcut icon" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link rel="preload" as="style" href={fontHref} />
-        <link
-          href={fontHref}
-          media="print"
-          // @ts-expect-error
-          onLoad="this.onload=null;this.removeAttribute('media');"
-          rel="stylesheet"
-        />
-        <noscript>{`<link href="${fontHref}" rel="stylesheet" />`}</noscript>
-      </Helmet>
+      />
       <div className="px-5">
         <Header />
         {includeIntro && <Intro />}

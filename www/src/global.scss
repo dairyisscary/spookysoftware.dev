@@ -14,3 +14,11 @@ body {
 a {
   @apply underline;
 }
+
+.font-cursive {
+  visibility: hidden;
+}
+
+.font-cursive-loaded .font-cursive {
+  visibility: visible;
+}

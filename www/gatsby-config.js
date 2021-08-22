@@ -59,6 +59,9 @@ module.exports = {
           "/node_modules/prismjs/",
           "/src/components/page/content.module.scss",
         ],
+        purgeCSSOptions: {
+          safelist: ["font-cursive-loaded"],
+        },
       },
     },
     {
