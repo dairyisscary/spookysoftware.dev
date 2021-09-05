@@ -5,7 +5,7 @@ function Footer() {
   const start = 2019;
   const extra = thisYear > start ? `${start}-${thisYear}` : start;
   return (
-    <footer className="flex items-center mb-8">
+    <footer className="flex items-center mb-20">
       <div className="flex-1 text-sm pr-4">
         <div>&copy; Eric Kim-Butler {extra}</div>
         <div>
