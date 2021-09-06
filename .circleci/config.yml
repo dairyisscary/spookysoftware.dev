@@ -1,17 +1,18 @@
 version: 2.1
 
 commands:
+  yarn_install:
+    description: Yarn install and link deps
+    steps:
+      - run:
+          name: Yarn Install
+          command: yarn install --immutable
+
   checkout_monorepo:
     description: Checkout the git mono repo with a standard root
     steps:
       - checkout:
           path: /home/circleci/spookysofware.dev
-
-  attach_made_workspace:
-    description: Attach workspace generated files from another job
-    steps:
-      - attach_workspace:
-          at: /home/circleci/spookysofware.dev
 
 executors:
   default_www_node_env:
@@ -20,42 +21,19 @@ executors:
     working_directory: /home/circleci/spookysofware.dev/www
 
 jobs:
-  build_www_working_directory:
-    executor: default_www_node_env
-    steps:
-      - checkout_monorepo
-
-      - restore_cache:
-          name: Restoring node_modules
-          keys:
-            - node_modules-packages-{{ checksum "yarn.lock" }}
-            - node_modules-packages
-      - run:
-          name: Installing NPM Dependencies
-          command: yarn install --frozen-lockfile
-      - save_cache:
-          name: Caching node_modules
-          key: node_modules-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
-
-      - persist_to_workspace:
-          root: "../"
-          paths:
-            - www
-
   fmt_www:
     executor: default_www_node_env
     steps:
-      - attach_made_workspace
+      - checkout_monorepo
       - run:
           name: Checking Formatting
-          command: yarn run format --check
+          command: yarn run prettier . --check
 
   typecheck_www:
     executor: default_www_node_env
     steps:
-      - attach_made_workspace
+      - checkout_monorepo
+      - yarn_install
       - run:
           name: Creating scss module defintions
           command: yarn run tsm src
@@ -66,10 +44,11 @@ jobs:
   build_www_static_html:
     executor: default_www_node_env
     steps:
-      - attach_made_workspace
+      - checkout_monorepo
+      - yarn_install
       - run:
           name: Building
-          command: rm -rf .cache public && yarn run build
+          command: yarn run clean && yarn run build
       - persist_to_workspace:
           root: "../"
           paths:
@@ -99,7 +78,9 @@ jobs:
     docker:
       - image: dairyisscary/awscli:1.14.36
     steps:
-      - attach_made_workspace
+      - checkout_monorepo
+      - attach_workspace:
+          at: /home/circleci/spookysofware.dev
       - run:
           name: Uploading to S3 Bucket
           command: |
@@ -120,17 +101,12 @@ workflows:
   version: 2
   "Check and Deploy":
     jobs:
-      - build_www_working_directory
       - deploy_infrastructure:
           filters:
             branches:
               only: production
-      - fmt_www:
-          requires:
-            - build_www_working_directory
-      - typecheck_www:
-          requires:
-            - build_www_working_directory
+      - fmt_www
+      - typecheck_www
       - build_www_static_html:
           requires:
             - typecheck_www

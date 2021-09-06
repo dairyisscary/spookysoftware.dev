@@ -1,8 +1,12 @@
-yarn-debug.log*
-yarn-error.log*
+*.scss.d.ts
 
-*.module.scss.d.ts
-
-node_modules/
 .cache/
 public/
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
