@@ -54,12 +54,12 @@ module.exports = {
         printRejected: true,
         develop: false,
         tailwind: true,
-        keyframes: false,
         ignore: [
           "/node_modules/prismjs/",
           "/src/components/page/content.module.scss",
         ],
         purgeCSSOptions: {
+          keyframes: true,
           safelist: ["font-cursive-loaded"],
         },
       },
