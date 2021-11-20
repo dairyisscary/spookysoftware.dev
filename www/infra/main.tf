@@ -291,3 +291,11 @@ resource "aws_route53_record" "main_cert_validation" {
   records = [each.value.record]
   ttl     = 60
 }
+
+resource "aws_route53_record" "fathom_analytics_cname" {
+  zone_id = var.root_dns_zone_id
+  name    = "efficient-skilled.${var.root_domain}"
+  type    = "CNAME"
+  records = ["ideal-pencil.b-cdn.net"]
+  ttl     = 60
+}
