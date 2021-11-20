@@ -4,9 +4,10 @@
   "version": "1.0.0",
   "author": "Eric Kim-Butler <eric@kimbutler.xyz>",
   "license": "MIT",
+  "packageManager": "yarn@3.1.0",
   "volta": {
-    "node": "14.15.0",
-    "yarn": "1.22.10"
+    "node": "16.13.0",
+    "yarn": "1.22.15"
   },
   "scripts": {
     "build": "gatsby build",
@@ -38,7 +39,7 @@
     "tailwindcss": "^2.2.15"
   },
   "devDependencies": {
-    "@types/node": "^14.17.19",
+    "@types/node": "^16.11.9",
     "@types/reach__router": "^1.3.9",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
