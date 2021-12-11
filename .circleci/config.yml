@@ -49,6 +49,8 @@ jobs:
       - run:
           name: Building
           command: yarn run clean && yarn run build
+          environment:
+            GATSBY_CPU_COUNT: "2"
       - persist_to_workspace:
           root: "../"
           paths:

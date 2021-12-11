@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "module": "esNext",
-    "jsx": "react-jsx",
     "allowJs": false,
-    "lib": ["es2019", "dom"],
-    "moduleResolution": "node",
     "baseUrl": "./src",
     "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "lib": ["esnext", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
     "paths": {
       "@/*": ["./*"]
     },
-    "noEmit": true
+    "strict": true,
+    "target": "esnext"
   },
   "include": ["./src/"]
 }

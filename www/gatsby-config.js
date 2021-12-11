@@ -1,6 +1,5 @@
 const path = require("path");
 
-const IS_PROD = process.env.NODE_ENV === "production";
 const TITLE = "Spooky Software";
 const SITE_URL = "https://www.spookysoftware.dev";
 
@@ -46,22 +45,6 @@ module.exports = {
       resolve: "gatsby-plugin-sass",
       options: {
         postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
-      },
-    },
-    IS_PROD && {
-      resolve: "gatsby-plugin-purgecss",
-      options: {
-        printRejected: true,
-        develop: false,
-        tailwind: true,
-        ignore: [
-          "/node_modules/prismjs/",
-          "/src/components/page/content.module.scss",
-        ],
-        purgeCSSOptions: {
-          keyframes: true,
-          safelist: ["font-cursive-loaded"],
-        },
       },
     },
     {
@@ -115,5 +98,5 @@ module.exports = {
         ],
       },
     },
-  ].filter(Boolean),
+  ],
 };
