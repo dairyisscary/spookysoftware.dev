@@ -18,6 +18,8 @@ type MetaParams = {
   author: string;
 };
 
+const MAIN_CONTENT_ID = "spookysoftware-main-content";
+
 function getMeta({ author, title, description }: MetaParams) {
   return [
     {
@@ -83,10 +85,18 @@ function Layout({ title, children, description, includeIntro }: Props) {
           author: siteMetadata.author,
         })}
       />
+      <a
+        href={`#${MAIN_CONTENT_ID}`}
+        className="absolute top-0 left-1/2 p-1 -translate-x-1/2 -translate-y-full opacity-0 transition focus:ease-in focus:translate-y-0 focus:opacity-100 motion-reduce:transition-none"
+      >
+        Jump to Content
+      </a>
       <div className="px-5">
         <Header />
         {includeIntro && <Intro />}
-        <main className="mb-20">{children}</main>
+        <main id={MAIN_CONTENT_ID} className="mb-20">
+          {children}
+        </main>
         <Footer />
       </div>
     </div>
