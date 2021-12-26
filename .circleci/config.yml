@@ -47,8 +47,19 @@ jobs:
       - checkout_monorepo
       - yarn_install
       - run:
-          name: Building
+          name: Installing Chromium for playwright
+          command: sudo apt-get install chromium
+      - run:
+          name: Building without resume PDF
           command: yarn run clean && yarn run build
+          environment:
+            GATSBY_CPU_COUNT: "2"
+      - run:
+          name: Capturing resume PDF
+          command: yarn node bin/create-pdf-of-resume.js
+      - run:
+          name: Building with resume PDF
+          command: yarn run build
           environment:
             GATSBY_CPU_COUNT: "2"
       - persist_to_workspace:
@@ -112,7 +123,6 @@ workflows:
       - build_www_static_html:
           requires:
             - typecheck_www
-            - fmt_www
       - deploy_www_upload:
           requires:
             - deploy_infrastructure

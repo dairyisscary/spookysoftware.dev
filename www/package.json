@@ -29,6 +29,7 @@
     "gatsby-remark-smartypants": "^5.4.0",
     "gatsby-source-filesystem": "^4.4.0",
     "gatsby-transformer-remark": "^5.4.0",
+    "playwright": "^1.17.1",
     "postcss": "^8.4.5",
     "prismjs": "^1.25.0",
     "react": "^17.0.2",

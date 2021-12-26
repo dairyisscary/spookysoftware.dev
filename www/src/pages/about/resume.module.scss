@@ -1,0 +1,9 @@
+.body-override {
+  background: none;
+  @apply bg-resume-body-background-light text-resume-primary;
+}
+
+.clamped {
+  width: min(100%, 73rem);
+  @apply mx-auto px-5;
+}

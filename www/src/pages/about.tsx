@@ -1,14 +1,15 @@
+import { Link } from "gatsby";
+
 import Layout from "@/components/layout";
 import NewTabLink from "@/components/new-tab-link";
 import PageTitle from "@/components/page/title";
 import PageContent from "@/components/page/content";
+import { computeYearsExperiance } from "@/util/profession";
 
 const FUCHSIA = "#FC3F93";
 
 function About() {
-  const thisYear = new Date().getFullYear();
-  const yearsSince2007 = thisYear - 2007;
-  const yearsSince2014 = thisYear - 2014;
+  const years = computeYearsExperiance();
   return (
     <Layout title="About">
       <PageTitle>About</PageTitle>
@@ -21,16 +22,19 @@ function About() {
           <span title={FUCHSIA} style={{ color: FUCHSIA }}>
             Fuchsia
           </span>
-          . As an adult, card-carrying Software Engineer {yearsSince2007} years
-          later, I&#39;m still trying to get that same high.
+          . As an adult, card-carrying Software Engineer{" "}
+          {years.casualYearsExperience} years later, I&#39;m still trying to get
+          that same high.
         </p>
         <p>
-          I have worked for the last {yearsSince2014} years at a few web-SaaS{" "}
+          I have worked for the last {years.professionalYearsExperience} years
+          at a few web-SaaS{" "}
           <NewTabLink href="https://www.shoobx.com/">software</NewTabLink>{" "}
           <NewTabLink href="https://www.notarize.com/">startups</NewTabLink>{" "}
           writing code that only just barely makes the thing work. In my
           defense, isn&#39;t that really what engineering is -- making the
-          cheapest solution that still works?
+          cheapest solution that still works? You can read my{" "}
+          <Link to="/about/resume/">résumé</Link> online.
         </p>
         <p>
           These days I have been thinking more about educational content for the

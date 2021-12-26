@@ -1,0 +1,8 @@
+.roles {
+  &:hover > * {
+    @apply opacity-50;
+  }
+  > *:hover {
+    @apply opacity-100;
+  }
+}

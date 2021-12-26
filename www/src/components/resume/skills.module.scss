@@ -1,0 +1,15 @@
+.skill:hover {
+  .level {
+    animation: fill-width 0.5s ease-out;
+    @apply motion-reduce:animate-none;
+  }
+}
+
+@keyframes fill-width {
+  from {
+    transform: translateX(-100%) scaleX(0);
+  }
+  to {
+    transform: translateX(0) scaleX(1);
+  }
+}
