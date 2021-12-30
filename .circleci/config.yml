@@ -48,7 +48,7 @@ jobs:
       - yarn_install
       - run:
           name: Installing Chromium for playwright
-          command: sudo apt-get install chromium
+          command: sudo apt-get install chromium fonts-liberation2
       - run:
           name: Building without resume PDF
           command: yarn run clean && yarn run build
@@ -57,6 +57,8 @@ jobs:
       - run:
           name: Capturing resume PDF
           command: yarn node bin/create-pdf-of-resume.js
+      - store_artifacts:
+          path: /home/circleci/spookysoftware.dev/www/src/pdfs/resume.pdf
       - run:
           name: Building with resume PDF
           command: yarn run build

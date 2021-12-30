@@ -53,7 +53,18 @@ async function capture() {
   const page = await context.newPage();
 
   console.log("Navigating to resume");
-  await page.goto(`http://${HOSTNAME}:${PORT}/about/resume/`);
+  await Promise.all([
+    page.waitForFunction(() => {
+      // We take this to mean that all our effects have ran and we're ready to snap a pic.
+      const antispamElement = window.document.querySelector(
+        "*[data-testid='anti-spam-heading']",
+      );
+      return antispamElement?.textContent.includes("eric");
+    }),
+    page.goto(`http://${HOSTNAME}:${PORT}/about/resume/`, {
+      waitUntil: "networkidle",
+    }),
+  ]);
 
   console.log("Creating PDF");
   await page.pdf({

@@ -1,6 +1,6 @@
 .body-override {
   background: none;
-  @apply bg-resume-body-background-light text-resume-primary;
+  @apply bg-resume-body-background-light text-resume-primary print:font-['Arial'];
 }
 
 .clamped {

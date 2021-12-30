@@ -42,18 +42,15 @@ function SectionTitle({ children }: { children: ReactNode }) {
   );
 }
 
-function HeadingItem({
-  title,
-  children,
-  href,
-}: {
+function HeadingItem(props: {
   title: ReactNode;
   children: ReactNode;
   href: string;
+  "data-testid"?: string;
 }) {
   return (
-    <li>
-      <strong>{title}:</strong> <a href={href}>{children}</a>
+    <li data-testid={props["data-testid"]}>
+      <strong>{props.title}:</strong> <a href={props.href}>{props.children}</a>
     </li>
   );
 }
@@ -64,7 +61,11 @@ function AntiSpamEmailHeadingItem() {
     setEmail("eric@kimbutler.xyz");
   }, []);
   return (
-    <HeadingItem title="Email" href={`mailto:${email}`}>
+    <HeadingItem
+      data-testid="anti-spam-heading"
+      title="Email"
+      href={`mailto:${email}`}
+    >
       {email}
     </HeadingItem>
   );
