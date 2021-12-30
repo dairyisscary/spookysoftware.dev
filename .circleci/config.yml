@@ -12,13 +12,13 @@ commands:
     description: Checkout the git mono repo with a standard root
     steps:
       - checkout:
-          path: /home/circleci/spookysofware.dev
+          path: /home/circleci/spookysoftware.dev
 
 executors:
   default_www_node_env:
     docker:
       - image: circleci/node:16.13.0
-    working_directory: /home/circleci/spookysofware.dev/www
+    working_directory: /home/circleci/spookysoftware.dev/www
 
 jobs:
   fmt_www:
@@ -70,7 +70,7 @@ jobs:
   deploy_infrastructure:
     docker:
       - image: dairyisscary/terraform:0.13.5
-    working_directory: /home/circleci/spookysofware.dev/infra
+    working_directory: /home/circleci/spookysoftware.dev/infra
     steps:
       - checkout_monorepo
       - run:
@@ -93,16 +93,16 @@ jobs:
     steps:
       - checkout_monorepo
       - attach_workspace:
-          at: /home/circleci/spookysofware.dev
+          at: /home/circleci/spookysoftware.dev
       - run:
           name: Uploading to S3 Bucket
           command: |
-            cd /home/circleci/spookysofware.dev/www
+            cd /home/circleci/spookysoftware.dev/www
             BUCKET_NAME=$(cat ../infra/output/terraform.json | jq '.www_static_bucket_name.value' -r) bash bin/upload-to-s3.sh
       - run:
           name: Invalidating Cloudfront
           command: |
-            cd /home/circleci/spookysofware.dev
+            cd /home/circleci/spookysoftware.dev
             aws cloudfront create-invalidation \
               --distribution-id $(\
                  cat infra/output/terraform.json | \
