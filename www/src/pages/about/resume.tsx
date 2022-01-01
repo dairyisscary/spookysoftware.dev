@@ -176,7 +176,12 @@ function Resume() {
             <Role>
               <RoleTitle
                 start={2017}
-                location="Amsterdam, NL (Remote)"
+                location={
+                  <>
+                    Boston, MA (Remote
+                    <span className="hidden md:inline"> from Amsterdam</span>)
+                  </>
+                }
                 organization="Notarize, Inc."
               >
                 Staff Software Engineer
