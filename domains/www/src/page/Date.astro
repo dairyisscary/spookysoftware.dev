@@ -1,0 +1,25 @@
+---
+import { formatDate } from "@/markup/datetime";
+
+export type Props = {
+  publishDate: Date;
+  modifiedDate?: Date | null;
+};
+
+function formatModfiedDate(date: Date): string {
+  const iso = date.toISOString();
+  const human = formatDate(date);
+  return ` (updated <time datetime="${iso}" aria-label="Modified Date">${human}</time>)`;
+}
+
+const { publishDate, modifiedDate } = Astro.props;
+---
+
+<div class="text-sm">
+  <time datetime={publishDate.toISOString()} aria-label="Publish Date">
+    {formatDate(publishDate)}
+  </time>
+  {modifiedDate && publishDate.valueOf() !== modifiedDate.valueOf() && (
+    <Fragment set:html={formatModfiedDate(modifiedDate)} />
+  )}
+</div>

@@ -1,0 +1,14 @@
+---
+export type Props = {
+  href: string;
+  title: string;
+  id?: string;
+};
+
+const { id, title, href } = Astro.props;
+---
+
+<li>
+  <strong>{title}:</strong>
+  <a id={id} href={href}><slot></slot></a>
+</li>

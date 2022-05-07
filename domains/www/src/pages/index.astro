@@ -1,0 +1,46 @@
+---
+import MarkdownPreview from "@/markup/MarkdownPreview.astro";
+import PageContent from "@/page/Content.astro";
+import PageDate from "@/page/Date.astro";
+import PageTitle from "@/page/Title.astro";
+import SpookyRootLayout from "@/layout/SpookyRoot.astro";
+import { getSortedBlogPosts } from "@/blog/posts";
+
+const posts = await getSortedBlogPosts();
+---
+
+<SpookyRootLayout>
+  <section slot="headsup" class="mb-20">
+    <div class="hello font-serif text-highlight text-3xl mb-2">
+      Hi, I'm Eric. I'm a software engineer, and this is where I write my
+      complaints.
+    </div>
+    <p>
+      This blog explores the crazy blend of ethics, software, and shit we call
+      technology.
+    </p>
+  </section>
+
+  {posts.map((post) => (
+    <article class="mb-20">
+      <PageTitle>
+        <a class="no-underline" href={post.url}>
+          {post.title}
+        </a>
+      </PageTitle>
+      <PageDate
+        publishDate={post.publishDate}
+        modifiedDate={post.modifiedDate}
+      />
+      <PageContent>
+        <MarkdownPreview html={post.html} readMoreHref={post.url} />
+      </PageContent>
+    </article>
+  ))}
+</SpookyRootLayout>
+
+<style>
+  .hello {
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+  }
+</style>

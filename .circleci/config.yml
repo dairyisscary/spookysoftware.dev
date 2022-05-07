@@ -1,0 +1,154 @@
+version: 2.1
+
+parameters:
+  working_directory:
+    default: "/home/circleci/spookysoftware.dev"
+    type: string
+
+commands:
+  checkout_monorepo:
+    description: Checkout the git mono repo with a standard root
+    steps:
+      - checkout:
+          path: << pipeline.parameters.working_directory >>
+
+  install_pnpm:
+    description: Install PNPM Package Manager
+    steps:
+      - run:
+          name: installing pnpm
+          command: |
+            sudo npm install -g pnpm@7.1.0
+            pnpm config set store-dir /home/circleci/.pnpm-store
+
+  install_node_deps:
+    description: Install and Link Node Deps
+    steps:
+      - run:
+          name: Installing Deps
+          command: pnpm install --frozen-lockfile
+
+executors:
+  default_www_node_env:
+    docker:
+      - image: cimg/node:16.13.2
+    working_directory: << pipeline.parameters.working_directory >>/domains/www
+
+  default_awscli_env:
+    docker:
+      - image: dairyisscary/awscli:2.6.1
+    working_directory: << pipeline.parameters.working_directory >>
+
+  default_terraform_env:
+    docker:
+      - image: dairyisscary/terraform:1.1.7
+    working_directory: << pipeline.parameters.working_directory >>/infra
+
+jobs:
+  static_analysis_www:
+    executor: default_www_node_env
+    steps:
+      - checkout_monorepo
+      - install_pnpm
+      - install_node_deps
+      - run:
+          name: Checking Formatting
+          command: pnpm exec prettier --plugin-search-dir=. --check .
+      - run:
+          name: Checking Types
+          command: pnpm exec astro check --experimental-integrations
+
+  build_www_static_html:
+    executor: default_www_node_env
+    steps:
+      - checkout_monorepo
+      - install_pnpm
+      - run:
+          name: Preinstalling Playwright Deps
+          command: pnpx playwright install --with-deps chromium
+      - install_node_deps
+      - run:
+          name: Building without resume PDF
+          command: pnpm build
+      - run:
+          name: Capturing resume PDF
+          command: node bin/create-pdf-of-resume.mjs
+      - store_artifacts:
+          path: << pipeline.parameters.working_directory >>/domains/www/src/profession/resume/print.pdf
+      - run:
+          name: Building with resume PDF
+          command: pnpm build
+      - persist_to_workspace:
+          root: << pipeline.parameters.working_directory >>
+          paths:
+            - domains/www/dist
+
+  deploy_infrastructure:
+    executor: default_terraform_env
+    steps:
+      - checkout_monorepo
+      - run:
+          name: Initing Terraform
+          command: terraform init
+      - run:
+          name: Forming Infrastructure
+          command: |
+            mkdir -p output
+            terraform apply -auto-approve
+            terraform output -json > output/terraform.json
+      - persist_to_workspace:
+          root: << pipeline.parameters.working_directory >>
+          paths:
+            - infra/output
+
+  deploy_www_upload:
+    executor: default_awscli_env
+    steps:
+      - attach_workspace:
+          at: << pipeline.parameters.working_directory >>
+      - run:
+          name: Uploading to S3 Bucket
+          command: |
+            cd << pipeline.parameters.working_directory >>/domains/www/dist
+
+            TERRAFORM_OUTPUT="$(cat ../../../infra/output/terraform.json)"
+            ONE_YEAR="31536000"
+            FIVE_MINUTES="300"
+
+            BUCKET_NAME="$(echo $TERRAFORM_OUTPUT | jq '.www_static_bucket_name.value' -r)"
+            BROWSER_EXPIRES="public, max-age=$FIVE_MINUTES, s-maxage=$ONE_YEAR, must-revalidate"
+            BROWSER_IMMUTABLE="public, max-age=$ONE_YEAR, immutable"
+
+            # Assets that can be cached indefinitely for CDN but browser only a few minutes
+            aws s3 cp --recursive --metadata-directive REPLACE --content-type "text/html; charset=utf-8" --cache-control "$BROWSER_EXPIRES" --exclude "*" --include "*.html" . "s3://$BUCKET_NAME"
+            aws s3 cp --metadata-directive REPLACE --content-type "application/rss+xml" --cache-control "$BROWSER_EXPIRES" rss.xml "s3://$BUCKET_NAME/rss.xml"
+
+            # Static assets and JS/CSS that can be cached forever
+            aws s3 cp --recursive --metadata-directive REPLACE --cache-control "$BROWSER_IMMUTABLE" assets "s3://$BUCKET_NAME/assets"
+
+            # Now purge the CDN
+            CLOUDFLARE_ZONE_ID="$(echo $TERRAFORM_OUTPUT | jq '.cloudflare_zone_id.value' -r)"
+            curl -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
+              -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              --data '{"purge_everything":true}'
+
+workflows:
+  "Deploy to Production":
+    when:
+      equal: [production, << pipeline.git.branch >>]
+    jobs:
+      - build_www_static_html
+      - deploy_infrastructure
+      - deploy_www_upload:
+          requires:
+            - deploy_infrastructure
+            - build_www_static_html
+
+  "Check Branch":
+    when:
+      not:
+        equal: [production, << pipeline.git.branch >>]
+    jobs:
+      - static_analysis_www
+      - build_www_static_html

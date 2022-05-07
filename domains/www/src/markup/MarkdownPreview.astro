@@ -1,0 +1,18 @@
+---
+type Props = {
+  readMoreHref: string;
+  html: string;
+};
+
+const { html, readMoreHref } = Astro.props;
+const excerptIndex = html.indexOf("<!-- endexcerpt -->");
+const hasExcerpt = excerptIndex > -1;
+const content = hasExcerpt ? html.slice(0, excerptIndex) : html;
+---
+
+<Fragment set:html={content} />
+{hasExcerpt && (
+  <a class="mt-4 block" href={readMoreHref}>
+    Read More...
+  </a>
+)}

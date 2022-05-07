@@ -1,0 +1,24 @@
+---
+export type Props = {
+  start: number;
+  end?: number;
+  organization: string;
+};
+
+const { start, end, organization } = Astro.props;
+---
+
+<div class="flex items-baseline justify-between gap-4">
+  <h3 class="text-xl font-semibold print:text-lg"><slot></slot></h3>
+  <p class="text-right text-sm italic text-resume-secondary">
+    <slot name="location"></slot>
+  </p>
+</div>
+
+<h4 class="text-lg print:text-base">{organization}</h4>
+
+<p
+  class="relative mt-1.5 text-sm before:absolute before:-left-[17px] before:top-1/2 before:h-2.5 before:w-2.5 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-resume-primary"
+>
+  {start}-{end !== undefined ? end : "present"}
+</p>

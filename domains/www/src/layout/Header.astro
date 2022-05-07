@@ -1,0 +1,50 @@
+---
+import { SITE_NAME } from "@/site/meta";
+---
+
+<header class="flex justify-between items-center py-4 mb-16">
+  <h1
+    class="site-title tracking-widest font-bold font-cursive text-4xl text-highlight"
+  >
+    <a class="no-underline" href="/">{SITE_NAME}</a>
+  </h1>
+  <nav class="flex">
+    <a href="/about/">About</a>
+  </nav>
+</header>
+
+<style>
+  .site-title {
+    animation: flicker 6s infinite alternate;
+  }
+
+  @media (prefers-reduced-motion) {
+    .site-title {
+      animation: none;
+      text-shadow: 0 0 8px theme("colors.highlight");
+    }
+  }
+
+  @keyframes flicker {
+    0%,
+    19.999%,
+    22%,
+    62.999%,
+    64%,
+    64.999%,
+    70%,
+    100% {
+      opacity: 1;
+      text-shadow: 0 0 8px theme("colors.highlight");
+    }
+    20%,
+    21.999%,
+    63%,
+    63.999%,
+    65%,
+    69.999% {
+      opacity: 0.4;
+      text-shadow: none;
+    }
+  }
+</style>

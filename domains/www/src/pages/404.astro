@@ -1,0 +1,14 @@
+---
+import PageContent from "@/page/Content.astro";
+import PageTitle from "@/page/Title.astro";
+import SpookyRootLayout from "@/layout/SpookyRoot.astro";
+---
+
+<SpookyRootLayout content={{ title: "404: Not Found" }}>
+  <PageTitle>404 — That means not found, homie</PageTitle>
+  <PageContent>
+    <p>
+      You just hit a route that doesn’t exist... Where did you get this link?
+    </p>
+  </PageContent>
+</SpookyRootLayout>

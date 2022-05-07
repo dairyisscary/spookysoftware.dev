@@ -1,0 +1,42 @@
+---
+import FavIcon from "@/site/favicon.png";
+import { SITE_NAME, SITE_DESCRIPTION } from "@/site/meta";
+import "./root.css";
+
+export type Props = {
+  content: { title: string; description?: string };
+  bodyClass?: string;
+};
+
+const { content, bodyClass } = Astro.props;
+const isProductionBuild = import.meta.env.PROD;
+const { description = SITE_DESCRIPTION, title } = content;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="og:title" content={title} />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="Eric Kim-Butler" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="shortcut icon" href={FavIcon} />
+    <slot name="head"></slot>
+  </head>
+  <body class={bodyClass}>
+    <slot></slot>
+    {isProductionBuild && (
+      <script
+        type="text/javascript"
+        src="https://efficient-skilled.spookysoftware.dev/script.js"
+        data-site="IAXGRDBV"
+        defer
+      />
+    )}
+  </body>
+</html>

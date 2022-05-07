@@ -1,0 +1,20 @@
+---
+import HeadingItem from "@/profession/resume/HeadingItem.astro";
+---
+
+<HeadingItem
+  id="anti-spam-heading"
+  title="Email"
+  href="mailto:anitspam@email.com"
+>
+  Enable JavaScript to See
+</HeadingItem>
+
+<script is:inline>
+  var email = "eric";
+  email += "@";
+  email += "kimbutler.xyz";
+  var item = document.getElementById("anti-spam-heading");
+  item.textContent = email;
+  item.setAttribute("href", "mailto:" + email);
+</script>

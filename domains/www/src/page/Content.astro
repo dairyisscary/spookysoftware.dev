@@ -1,0 +1,59 @@
+<div class="content">
+  <slot></slot>
+</div>
+
+<style>
+  .content {
+    @apply mt-7 leading-relaxed;
+  }
+
+  .content :global(blockquote) {
+    @apply ml-0 border-l-4 border-solid border-title pl-4 italic;
+  }
+
+  .content :global(h2) {
+    @apply font-serif text-2xl text-title;
+  }
+
+  .content :global(h3) {
+    @apply text-xl text-title;
+  }
+
+  .content :global(h4) {
+    @apply text-title;
+  }
+
+  .content :global(h2),
+  .content :global(h3),
+  .content :global(h4) {
+    @apply mb-2;
+  }
+
+  .content :global(p),
+  .content :global(ul),
+  .content :global(ol),
+  .content :global(.astro-code) {
+    @apply mb-6;
+  }
+
+  .content :global(ol),
+  .content :global(ul) {
+    @apply ml-8 mr-5;
+  }
+
+  .content :global(ul) {
+    @apply list-disc;
+  }
+
+  .content :global(ol) {
+    @apply list-decimal;
+  }
+
+  .content :global(*:not(pre) > code) {
+    @apply rounded-sm bg-title p-0.5 text-body-background-light;
+  }
+
+  .content :global(pre) {
+    @apply min-w-full rounded border border-primary border-opacity-30 px-4 py-3;
+  }
+</style>

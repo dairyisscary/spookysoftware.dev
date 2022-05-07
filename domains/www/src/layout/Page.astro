@@ -1,0 +1,27 @@
+---
+import SpookyRootLayout from "@/layout/SpookyRoot.astro";
+import PageContent from "@/page/Content.astro";
+import PageDate from "@/page/Date.astro";
+import PageTitle from "@/page/Title.astro";
+
+export type Props = {
+  content: { title: string; publishDate?: string; modifiedDate?: string };
+};
+
+const { content } = Astro.props;
+---
+
+<SpookyRootLayout content={content}>
+  <article>
+    <PageTitle>{content.title}</PageTitle>
+    {content.publishDate && (
+      <PageDate
+        publishDate={new Date(content.publishDate)}
+        modifiedDate={
+          content.modifiedDate ? new Date(content.modifiedDate) : null
+        }
+      />
+    )}
+    <PageContent><slot></slot></PageContent>
+  </article>
+</SpookyRootLayout>

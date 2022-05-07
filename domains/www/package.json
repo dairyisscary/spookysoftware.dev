@@ -1,0 +1,25 @@
+{
+  "name": "www.spookysoftware.dev",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "astro build --experimental-integrations",
+    "format": "prettier --plugin-search-dir=. --write .",
+    "start": "astro dev --experimental-integrations"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^0.2.0",
+    "@astrojs/tailwind": "^0.2.1",
+    "astro": "1.0.0-beta.29",
+    "html-minifier-terser": "7.0.0-alpha.2",
+    "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "playwright": "^1.22.1",
+    "prettier": "^2.6.2",
+    "prettier-plugin-astro": "0.1.0-next.4",
+    "prettier-plugin-tailwindcss": "^0.1.11",
+    "typescript": "~4.6.4"
+  }
+}

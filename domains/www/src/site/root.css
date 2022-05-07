@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply min-h-screen bg-body-background-dark text-primary;
+    background: linear-gradient(
+      45deg,
+      theme("colors.body-background-dark"),
+      theme("colors.body-background-light")
+    );
+  }
+
+  a {
+    @apply underline;
+  }
+}
+
+.font-cursive {
+  visibility: hidden;
+}
+
+.font-cursive-loaded .font-cursive {
+  visibility: visible;
+}
