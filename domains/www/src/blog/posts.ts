@@ -54,3 +54,8 @@ export async function getSortedBlogPosts(): Promise<BlogPost[]> {
     })
     .sort(sortPosts);
 }
+
+export function getHTMLExcerpt(html: string): string | null {
+  const excerptIndex = html.search(/({\/\*)?<!-- endexcerpt -->/);
+  return excerptIndex > -1 ? html.slice(0, excerptIndex) : null;
+}

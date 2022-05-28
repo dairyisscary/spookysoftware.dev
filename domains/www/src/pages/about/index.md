@@ -6,12 +6,10 @@ setup: |
   const exp = computeYearsExperience();
 ---
 
-<p>
-  Circa 2007, I stumbled upon the great wasteland known as <a href="https://myspace.com/">MySpace.com</a>.
-  I wrote my first lines of CSS trying to make the background of my profile a baller shade of
-  <span style="color:#FC3F93">Fuchsia</span>. As an adult, card-carrying Software Engineer
-  {exp.casualYearsExperience} years later, I’m still trying to get that same high.
-</p>
+Circa 2007, I stumbled upon the great wasteland known as <a href="https://myspace.com/">MySpace.com</a>. I wrote my
+first lines of CSS trying to make the background of my profile a baller shade of
+<span style="color:#FC3F93">Fuchsia</span>. As an adult, card-carrying Software Engineer {exp.casualYearsExperience}
+years later, I’m still trying to get that same high.
 
 I have worked for the last {exp.professionalYearsExperience} years at a few web-SaaS [software][shoobx]
 [startups][notarize] writing code that only just barely makes the thing work. In my defense, isn't that really what

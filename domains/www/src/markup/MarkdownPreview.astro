@@ -1,17 +1,17 @@
 ---
+import { getHTMLExcerpt } from "@/blog/posts";
+
 type Props = {
   readMoreHref: string;
   html: string;
 };
 
 const { html, readMoreHref } = Astro.props;
-const excerptIndex = html.indexOf("<!-- endexcerpt -->");
-const hasExcerpt = excerptIndex > -1;
-const content = hasExcerpt ? html.slice(0, excerptIndex) : html;
+const excerpt = getHTMLExcerpt(html);
 ---
 
-<Fragment set:html={content} />
-{hasExcerpt && (
+<Fragment set:html={excerpt || html} />
+{excerpt && (
   <a class="mt-4 block" href={readMoreHref}>
     Read More...
   </a>
