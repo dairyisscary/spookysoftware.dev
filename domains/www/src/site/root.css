@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: "Amatic SC";
+    font-style: normal;
+    font-weight: 700;
+    src: url("./AmaticSC-700.woff2") format("woff2");
+  }
+
   body {
     @apply min-h-screen bg-body-background-dark text-primary;
     background: linear-gradient(
@@ -15,12 +22,4 @@
   a {
     @apply underline;
   }
-}
-
-.font-cursive {
-  visibility: hidden;
-}
-
-.font-cursive-loaded .font-cursive {
-  visibility: visible;
 }

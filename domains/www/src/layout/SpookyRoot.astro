@@ -10,26 +10,11 @@ export type Props = {
 
 const { content = {} } = Astro.props;
 const mainContentId = "spookysoftware-main-content";
-const uriSite = encodeURIComponent(SITE_NAME);
-const googleFontHref = `https://fonts.googleapis.com/css?family=Amatic+SC:700&text=${uriSite}&display=swap`;
 const titlePrefix = content.title ? `${content.title} | ` : "";
 const fullTitle = `${titlePrefix}${SITE_NAME}`;
 ---
 
 <RootLayout content={{ ...content, title: fullTitle }}>
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href={googleFontHref} />
-    <noscript>
-      <link rel="stylesheet" href={googleFontHref} />
-      <style is:inline>
-        .font-cursive {
-          visibility: visible !important;
-        }
-      </style>
-    </noscript>
-  </Fragment>
-
   <div class="flex flex-col mx-auto max-w-4xl">
     <a
       href={`#${mainContentId}`}
@@ -46,15 +31,4 @@ const fullTitle = `${titlePrefix}${SITE_NAME}`;
       <Footer />
     </div>
   </div>
-  <script is:inline define:vars={{ googleFontHref }}>
-    const link = document.createElement("link");
-    link.media = "print";
-    link.rel = "stylesheet";
-    link.onload = function () {
-      link.removeAttribute("media");
-      document.body.classList.add("font-cursive-loaded");
-    };
-    link.href = googleFontHref;
-    document.head.appendChild(link);
-  </script>
 </RootLayout>
