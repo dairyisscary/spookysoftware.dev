@@ -16,9 +16,9 @@ commands:
     description: Install PNPM Package Manager
     steps:
       - run:
-          name: installing pnpm
+          name: Installing pnpm
           command: |
-            sudo npm install -g pnpm@7.3.0
+            sudo npm install -g pnpm@7.5.2
             pnpm config set store-dir /home/circleci/.pnpm-store
 
   install_node_deps:
