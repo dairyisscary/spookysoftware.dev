@@ -9,7 +9,7 @@ export type Props = {
 };
 
 const { content, bodyClass } = Astro.props;
-const isProductionBuild = import.meta.env.PROD;
+const isProductionBuild: boolean = (import.meta as any).env.PROD;
 const { description = SITE_DESCRIPTION, title } = content;
 ---
 

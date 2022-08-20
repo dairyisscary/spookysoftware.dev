@@ -36,6 +36,10 @@
     @apply mb-6;
   }
 
+  .content :global(.astro-code .line span) {
+    @apply !not-italic;
+  }
+
   .content :global(ol),
   .content :global(ul) {
     @apply ml-8 mr-5;
