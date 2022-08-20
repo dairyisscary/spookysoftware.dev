@@ -18,7 +18,7 @@ commands:
       - run:
           name: Installing pnpm
           command: |
-            sudo npm install -g pnpm@7.5.2
+            sudo npm install -g pnpm@7.9.3
             pnpm config set store-dir /home/circleci/.pnpm-store
 
   install_node_deps:
@@ -54,9 +54,11 @@ jobs:
       - run:
           name: Checking Formatting
           command: pnpm exec prettier --plugin-search-dir=. --check .
-      - run:
-          name: Checking Types
-          command: pnpm exec astro check --experimental-integrations
+      # - run:
+        # name: Checking Types
+        # command: |
+        #   pnpm exec astro check
+        #   pnpm exec tsc
 
   build_www_static_html:
     executor: default_www_node_env

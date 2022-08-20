@@ -1,7 +1,7 @@
 import rss from "@astrojs/rss";
 
 import { getSortedBlogPosts } from "@/blog/posts";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/site/meta";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/site/meta";
 
 export async function get() {
   const posts = await getSortedBlogPosts();
@@ -11,7 +11,7 @@ export async function get() {
     title: `${SITE_NAME} RSS Feed`,
     description: SITE_DESCRIPTION,
     customData: lastBuildDate,
-    site: SITE_URL,
+    site: import.meta.env.SITE,
     items: posts.map((post) => ({
       title: post.title,
       link: post.url,

@@ -14,14 +14,16 @@ const { content } = Astro.props;
 <SpookyRootLayout content={content}>
   <article>
     <PageTitle>{content.title}</PageTitle>
-    {content.publishDate && (
-      <PageDate
-        publishDate={new Date(content.publishDate)}
-        modifiedDate={
-          content.modifiedDate ? new Date(content.modifiedDate) : null
-        }
-      />
-    )}
-    <PageContent><slot></slot></PageContent>
+    {
+      content.publishDate && (
+        <PageDate
+          publishDate={new Date(content.publishDate)}
+          modifiedDate={
+            content.modifiedDate ? new Date(content.modifiedDate) : null
+          }
+        />
+      )
+    }
+    <PageContent><slot /></PageContent>
   </article>
 </SpookyRootLayout>

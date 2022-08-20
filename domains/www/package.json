@@ -4,22 +4,25 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "astro build --experimental-integrations",
+    "build": "astro build",
     "format": "prettier --plugin-search-dir=. --write .",
-    "start": "astro dev --experimental-integrations"
+    "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/rss": "^0.2.1",
-    "@astrojs/tailwind": "^0.2.4",
-    "astro": "1.0.0-beta.72",
-    "html-minifier-terser": "7.0.0-beta.0",
-    "tailwindcss": "^3.1.6"
+    "@astrojs/mdx": "^0.10.0",
+    "@astrojs/rss": "^1.0.0",
+    "@astrojs/tailwind": "^1.0.0",
+    "astro": "^1.0.6",
+    "html-minifier-terser": "^7.0.0",
+    "tailwindcss": "^3.1.8"
   },
   "devDependencies": {
-    "playwright": "^1.23.4",
+    "@types/html-minifier-terser": "^7.0.0",
+    "@types/node": "^16.11.51",
+    "playwright": "^1.25.0",
     "prettier": "^2.7.1",
-    "prettier-plugin-astro": "0.1.1",
-    "prettier-plugin-tailwindcss": "^0.1.12",
+    "prettier-plugin-astro": "^0.5.0",
+    "prettier-plugin-tailwindcss": "^0.1.13",
     "typescript": "~4.7.4"
   }
 }

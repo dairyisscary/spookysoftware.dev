@@ -9,9 +9,9 @@ const { start, end, organization } = Astro.props;
 ---
 
 <div class="flex items-baseline justify-between gap-4">
-  <h3 class="text-xl font-semibold print:text-lg"><slot></slot></h3>
+  <h3 class="text-xl font-semibold print:text-lg"><slot /></h3>
   <p class="text-right text-sm italic text-resume-secondary">
-    <slot name="location"></slot>
+    <slot name="location" />
   </p>
 </div>
 

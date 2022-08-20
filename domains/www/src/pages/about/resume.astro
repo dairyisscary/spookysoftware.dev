@@ -158,15 +158,17 @@ const printLink =
     <section>
       <SectionTitle>Projects</SectionTitle>
       <ol class="space-y-4 print:space-y-3">
-        {PINNED_PROJECTS.map((project) => (
-          <Project
-            href={project.link}
-            description={project.description}
-            technology={project.technologyDescription}
-          >
-            {project.title}
-          </Project>
-        ))}
+        {
+          PINNED_PROJECTS.map((project) => (
+            <Project
+              href={project.link}
+              description={project.description}
+              technology={project.technologyDescription}
+            >
+              {project.title}
+            </Project>
+          ))
+        }
         <Project description="Jest, eslint, gatsby, RxJS, Elixir, terraform">
           Other Open-Source
         </Project>

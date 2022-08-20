@@ -3,15 +3,10 @@ type Frontmatter = {
   publishDate: string;
   modifiedDate?: string;
 };
-type MarkdownModule = { metadata: { html: string } };
-type WrappedBlogModule = {
+type BlogModule = {
   url: string;
+  compiledContent: () => string;
   frontmatter: Frontmatter;
-  default: () => Promise<MarkdownModule>;
-};
-type BlogModuleInfo = {
-  wrappedModule: WrappedBlogModule;
-  markdownModule: MarkdownModule;
 };
 type BlogPost = {
   title: string;
@@ -25,27 +20,21 @@ function sortPosts(a: BlogPost, b: BlogPost): number {
   return b.publishDate.valueOf() - a.publishDate.valueOf();
 }
 
-async function getBlogs(): Promise<BlogModuleInfo[]> {
-  const moduleMap = import.meta.glob<WrappedBlogModule>(
-    "../pages/blog/*/index.md",
-  );
-  const postLoaders = Object.values(moduleMap).map(async (getModule) => {
-    const wrappedModule = await getModule();
-    return { wrappedModule, markdownModule: await wrappedModule.default() };
-  });
+async function getBlogs(): Promise<BlogModule[]> {
+  const moduleMap = import.meta.glob<BlogModule>("../pages/blog/*/index.md");
+  const postLoaders = Object.values(moduleMap).map((getModule) => getModule());
   return Promise.all(postLoaders);
 }
 
 export async function getSortedBlogPosts(): Promise<BlogPost[]> {
   const posts = await getBlogs();
   return posts
-    .map(({ wrappedModule, markdownModule }) => {
-      const { url, frontmatter } = wrappedModule;
-      const { html } = markdownModule.metadata;
+    .map((blogModule) => {
+      const { url, frontmatter, compiledContent } = blogModule;
       return {
         title: frontmatter.title,
         url,
-        html,
+        html: compiledContent(),
         publishDate: new Date(frontmatter.publishDate),
         modifiedDate: frontmatter.modifiedDate
           ? new Date(frontmatter.modifiedDate)

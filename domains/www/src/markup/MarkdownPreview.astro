@@ -11,8 +11,10 @@ const excerpt = getHTMLExcerpt(html);
 ---
 
 <Fragment set:html={excerpt || html} />
-{excerpt && (
-  <a class="mt-4 block" href={readMoreHref}>
-    Read More...
-  </a>
-)}
+{
+  excerpt && (
+    <a class="mt-4 block" href={readMoreHref}>
+      Read More...
+    </a>
+  )
+}

@@ -19,7 +19,10 @@ const { publishDate, modifiedDate } = Astro.props;
   <time datetime={publishDate.toISOString()} aria-label="Publish Date">
     {formatDate(publishDate)}
   </time>
-  {modifiedDate && publishDate.valueOf() !== modifiedDate.valueOf() && (
-    <Fragment set:html={formatModfiedDate(modifiedDate)} />
-  )}
+  {
+    modifiedDate &&
+    publishDate.valueOf() !== modifiedDate.valueOf() && (
+      <Fragment set:html={formatModfiedDate(modifiedDate)} />
+    )
+  }
 </div>

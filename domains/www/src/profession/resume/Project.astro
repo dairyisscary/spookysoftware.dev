@@ -13,19 +13,23 @@ const { href, technology, description } = Astro.props;
 <li>
   <div class="flex items-baseline justify-between">
     <h3 class="text-lg font-semibold print:text-base">
-      {href ? (
-        <NewTabLink href={href}>
+      {
+        href ? (
+          <NewTabLink href={href}>
+            <slot />
+          </NewTabLink>
+        ) : (
           <slot />
-        </NewTabLink>
-      ) : (
-        <slot />
-      )}
+        )
+      }
     </h3>
-    {technology && (
-      <p class="text-right text-sm italic text-resume-secondary print:text-xs">
-        {technology}
-      </p>
-    )}
+    {
+      technology && (
+        <p class="text-right text-sm italic text-resume-secondary print:text-xs">
+          {technology}
+        </p>
+      )
+    }
   </div>
   <p class="mt-1 text-sm print:text-xs">{description}</p>
 </li>

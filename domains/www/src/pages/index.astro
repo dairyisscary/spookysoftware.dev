@@ -21,22 +21,24 @@ const posts = await getSortedBlogPosts();
     </p>
   </section>
 
-  {posts.map((post) => (
-    <article class="mb-20">
-      <PageTitle>
-        <a class="no-underline" href={post.url}>
-          {post.title}
-        </a>
-      </PageTitle>
-      <PageDate
-        publishDate={post.publishDate}
-        modifiedDate={post.modifiedDate}
-      />
-      <PageContent>
-        <MarkdownPreview html={post.html} readMoreHref={post.url} />
-      </PageContent>
-    </article>
-  ))}
+  {
+    posts.map((post) => (
+      <article class="mb-20">
+        <PageTitle>
+          <a class="no-underline" href={post.url}>
+            {post.title}
+          </a>
+        </PageTitle>
+        <PageDate
+          publishDate={post.publishDate}
+          modifiedDate={post.modifiedDate}
+        />
+        <PageContent>
+          <MarkdownPreview html={post.html} readMoreHref={post.url} />
+        </PageContent>
+      </article>
+    ))
+  }
 </SpookyRootLayout>
 
 <style>
