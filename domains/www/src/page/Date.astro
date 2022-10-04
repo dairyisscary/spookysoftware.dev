@@ -20,8 +20,7 @@ const { publishDate, modifiedDate } = Astro.props;
     {formatDate(publishDate)}
   </time>
   {
-    modifiedDate &&
-    publishDate.valueOf() !== modifiedDate.valueOf() && (
+    modifiedDate && publishDate.valueOf() !== modifiedDate.valueOf() && (
       <Fragment set:html={formatModfiedDate(modifiedDate)} />
     )
   }
