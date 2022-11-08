@@ -12,13 +12,9 @@ const posts = await getSortedBlogPosts();
 <SpookyRootLayout>
   <section slot="headsup" class="mb-20">
     <div class="hello font-serif text-highlight text-3xl mb-2">
-      Hi, I'm Eric. I'm a software engineer, and this is where I write my
-      complaints.
+      Hi, I'm Eric. I'm a software engineer, and this is where I write my complaints.
     </div>
-    <p>
-      This blog explores the crazy blend of ethics, software, and shit we call
-      technology.
-    </p>
+    <p>This blog explores the crazy blend of ethics, software, and shit we call technology.</p>
   </section>
 
   {
@@ -29,10 +25,7 @@ const posts = await getSortedBlogPosts();
             {post.title}
           </a>
         </PageTitle>
-        <PageDate
-          publishDate={post.publishDate}
-          modifiedDate={post.modifiedDate}
-        />
+        <PageDate publishDate={post.publishDate} modifiedDate={post.modifiedDate} />
         <PageContent>
           <MarkdownPreview html={post.html} readMoreHref={post.url} />
         </PageContent>

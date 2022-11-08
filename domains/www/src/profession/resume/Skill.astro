@@ -13,11 +13,7 @@ const width = `${Math.min(100, Math.max(0, value * 100))}%`;
     {title}
   </div>
   <div class="h-2 flex-1 overflow-hidden rounded-sm bg-resume-context">
-    <div
-      class="level h-full bg-resume-context-accent"
-      style={`width:${width}`}
-      aria-hidden="true"
-    >
+    <div class="level h-full bg-resume-context-accent" style={`width:${width}`} aria-hidden="true">
     </div>
     <span class="sr-only">{width} out of 100</span>
   </div>

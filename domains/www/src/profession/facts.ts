@@ -1,8 +1,7 @@
 export const PINNED_PROJECTS = [
   {
     title: "QLC",
-    description:
-      "Fast, multi-threaded compiler for TypeScript definitions from GraphQL",
+    description: "Fast, multi-threaded compiler for TypeScript definitions from GraphQL",
     technologyDescription: "Rust",
     link: "https://github.com/notarize/qlc",
   },

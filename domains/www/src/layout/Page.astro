@@ -18,9 +18,7 @@ const { content } = Astro.props;
       content.publishDate && (
         <PageDate
           publishDate={new Date(content.publishDate)}
-          modifiedDate={
-            content.modifiedDate ? new Date(content.modifiedDate) : null
-          }
+          modifiedDate={content.modifiedDate ? new Date(content.modifiedDate) : null}
         />
       )
     }

@@ -11,21 +11,16 @@ function waitFor(time) {
 
 function isServerReady() {
   return new Promise((resolve) => {
-    const req = request(
-      { port: PORT, hostname: HOSTNAME, path: "/" },
-      (res) => {
-        resolve(true);
-      },
-    );
+    const req = request({ port: PORT, hostname: HOSTNAME, path: "/" }, (res) => {
+      resolve(true);
+    });
     req.on("error", (err) => resolve(false));
     req.end();
   });
 }
 
 async function startServer() {
-  const serverProcess = exec(
-    "pnpm exec astro preview --experimental-integrations",
-  );
+  const serverProcess = exec("pnpm exec astro preview --experimental-integrations");
   const kill = () => {
     console.log("Killing the server");
     serverProcess.kill();
@@ -58,8 +53,7 @@ async function capture() {
   await Promise.all([
     page.waitForFunction(() => {
       // We take this to mean that all our effects have ran and we're ready to snap a pic.
-      const antispamElement =
-        window.document.getElementById("anti-spam-heading");
+      const antispamElement = window.document.getElementById("anti-spam-heading");
       return antispamElement?.textContent.includes("eric");
     }),
     page.goto(`http://${HOSTNAME}:${PORT}/about/resume/`, {

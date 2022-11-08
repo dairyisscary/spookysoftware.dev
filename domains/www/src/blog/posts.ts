@@ -36,9 +36,7 @@ export async function getSortedBlogPosts(): Promise<BlogPost[]> {
         url,
         html: compiledContent(),
         publishDate: new Date(frontmatter.publishDate),
-        modifiedDate: frontmatter.modifiedDate
-          ? new Date(frontmatter.modifiedDate)
-          : null,
+        modifiedDate: frontmatter.modifiedDate ? new Date(frontmatter.modifiedDate) : null,
       };
     })
     .sort(sortPosts);
