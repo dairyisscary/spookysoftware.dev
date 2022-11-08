@@ -54,11 +54,11 @@ jobs:
       - run:
           name: Checking Formatting
           command: pnpm exec prettier --plugin-search-dir=. --check .
-      # - run:
-        # name: Checking Types
-        # command: |
-        #   pnpm exec astro check
-        #   pnpm exec tsc
+      - run:
+          name: Checking Types
+          command: |
+            pnpm exec astro check
+            pnpm exec tsc
 
   build_www_static_html:
     executor: default_www_node_env

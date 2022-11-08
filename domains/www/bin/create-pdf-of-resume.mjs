@@ -20,7 +20,7 @@ function isServerReady() {
 }
 
 async function startServer() {
-  const serverProcess = exec("pnpm exec astro preview --experimental-integrations");
+  const serverProcess = exec("pnpm exec astro preview");
   const kill = () => {
     console.log("Killing the server");
     serverProcess.kill();
