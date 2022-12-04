@@ -15,10 +15,10 @@ const fullTitle = `${titlePrefix}${SITE_NAME}`;
 ---
 
 <RootLayout content={{ ...content, title: fullTitle }}>
-  <div class="flex flex-col mx-auto max-w-4xl">
+  <div class="mx-auto flex max-w-4xl flex-col">
     <a
       href={`#${mainContentId}`}
-      class="absolute top-0 left-1/2 p-1 -translate-x-1/2 -translate-y-full opacity-0 transition focus:ease-in focus:translate-y-0 focus:opacity-100 motion-reduce:transition-none"
+      class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full p-1 opacity-0 transition focus:translate-y-0 focus:opacity-100 focus:ease-in motion-reduce:transition-none"
     >
       Jump to Content
     </a>

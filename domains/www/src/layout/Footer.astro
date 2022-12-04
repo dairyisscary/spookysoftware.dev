@@ -6,8 +6,8 @@ const start = 2019;
 const extra = thisYear > start ? `${start}-${thisYear}` : start;
 ---
 
-<footer class="flex items-center mb-20">
-  <div class="flex-1 text-sm pr-4">
+<footer class="mb-20 flex items-center">
+  <div class="flex-1 pr-4 text-sm">
     <div>&copy; Eric Kim-Butler {extra}</div>
     <div>
       Built with{" "}
@@ -17,7 +17,7 @@ const extra = thisYear > start ? `${start}-${thisYear}` : start;
       and love.
     </div>
   </div>
-  <div class="flex items-center w-32">
+  <div class="flex w-32 items-center">
     <NewTabLink href="/rss.xml" class="flex-1 mr-4">
       <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <circle class="fill-current" cx="3.429" cy="20.571" r="3.429"></circle>
