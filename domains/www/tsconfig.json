@@ -5,13 +5,13 @@
     "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
+    "isolatedModules": true,
     "noEmit": true,
     "paths": {
       "@/*": ["./src/*"]
     },
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext",
-    "types": ["astro/client"]
+    "target": "esnext"
   }
 }
