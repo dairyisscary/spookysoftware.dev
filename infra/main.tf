@@ -42,13 +42,6 @@ resource "cloudflare_record" "root" {
   proxied = true
 }
 
-resource "cloudflare_record" "fathom_analytics" {
-  zone_id = cloudflare_zone.root_zone.id
-  type    = "CNAME"
-  name    = "efficient-skilled"
-  value   = "ideal-pencil.b-cdn.net"
-}
-
 resource "cloudflare_record" "spf" {
   zone_id = cloudflare_zone.root_zone.id
   type    = "TXT"

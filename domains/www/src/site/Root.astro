@@ -9,7 +9,6 @@ export type Props = {
 };
 
 const { content, bodyClass } = Astro.props;
-const isProductionBuild: boolean = (import.meta as any).env.PROD;
 const { description = SITE_DESCRIPTION, title } = content;
 ---
 
@@ -30,15 +29,5 @@ const { description = SITE_DESCRIPTION, title } = content;
   </head>
   <body class={bodyClass}>
     <slot />
-    {
-      isProductionBuild && (
-        <script
-          type="text/javascript"
-          src="https://efficient-skilled.spookysoftware.dev/script.js"
-          data-site="IAXGRDBV"
-          defer
-        />
-      )
-    }
   </body>
 </html>
