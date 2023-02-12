@@ -9,7 +9,7 @@ export const PINNED_PROJECTS = [
     title: "solid-a11y",
     description: "Fully accessible, unstyled component library for SolidJS",
     technologyDescription: "TypeScript, SolidJS",
-    link: "https://www.solid-a11y.dev/",
+    link: "https://solid-a11y.spookysoftware.dev/",
   },
   {
     title: "YouTube: Spooky Software",
