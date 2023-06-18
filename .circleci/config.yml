@@ -31,7 +31,7 @@ commands:
 executors:
   default_www_node_env:
     docker:
-      - image: cimg/node:18.12.0
+      - image: cimg/node:18.16.0
     working_directory: << pipeline.parameters.working_directory >>/domains/www
 
   default_awscli_env:
