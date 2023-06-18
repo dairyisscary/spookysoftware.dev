@@ -5,24 +5,22 @@
   "type": "module",
   "scripts": {
     "build": "astro build",
-    "format": "prettier --plugin-search-dir=. --write .",
+    "format": "prettier --write . && prettier --write src/**/*.astro",
     "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.16.0",
-    "@astrojs/rss": "^2.1.0",
-    "@astrojs/tailwind": "^3.0.1",
-    "astro": "^2.0.10",
-    "html-minifier-terser": "^7.1.0",
-    "tailwindcss": "^3.2.6"
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/rss": "^2.4.3",
+    "@astrojs/tailwind": "^4.0.0",
+    "astro": "^2.9.0",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
-    "@types/html-minifier-terser": "^7.0.0",
-    "@types/node": "^18.13.0",
-    "playwright": "^1.30.0",
-    "prettier": "^2.8.4",
-    "prettier-plugin-astro": "^0.8.0",
-    "prettier-plugin-tailwindcss": "^0.2.2",
-    "typescript": "~4.9.5"
+    "@types/node": "^18.16.19",
+    "playwright": "^1.36.1",
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.11.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
+    "typescript": "~5.1.6"
   }
 }

@@ -40,13 +40,13 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
         <p>
           Software Engineer
           <span
-            class="block pt-1 text-sm italic text-resume-secondary print:inline print:pt-0 print:pl-1 md:inline md:pt-0 md:pl-1"
+            class="block pt-1 text-sm italic text-resume-secondary print:inline print:pl-1 print:pt-0 md:inline md:pl-1 md:pt-0"
           >
             Amsterdam, The Netherlands
           </span>
         </p>
         <p
-          class="absolute top-0 right-0 rounded-bl bg-resume-context py-1 px-2 text-sm print:hidden md:static md:mt-1 md:rounded-none md:bg-inherit md:px-0"
+          class="absolute right-0 top-0 rounded-bl bg-resume-context px-2 py-1 text-sm print:hidden md:static md:mt-1 md:rounded-none md:bg-inherit md:px-0"
         >
           <a download="Eric Kim-Butler's Résumé.pdf" href={PDFResume}>
             <span class="md:hidden">PDF</span>
@@ -56,7 +56,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
         <p class="mt-1 hidden text-xs print:inline">
           <span class="text-sm">*</span> This PDF was automatically generated from an
           <Fragment set:html={printLink} />
-          on {formatDate(now)}.
+           on {formatDate(now)}.
         </p>
       </div>
     </div>
@@ -65,17 +65,13 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
         class="clamped flex flex-wrap items-center justify-between gap-4 text-center text-sm sm:flex-nowrap md:text-base print:md:text-sm"
       >
         <li class="hidden print:inline md:inline">
-          <ResumeIcon class="w-5 h-5" />
+          <ResumeIcon class="h-5 w-5" />
         </li>
         <AntiSpamEmailHeadingItem />
-        <HeadingItem title="Web" href="https://www.spookysoftware.dev/">
-          www.spookysoftware.dev
-        </HeadingItem>
-        <HeadingItem title="GitHub" href="https://github.com/dairyisscary">
-          dairyisscary
-        </HeadingItem>
+        <HeadingItem title="Web" href="https://www.spookysoftware.dev/">www.spookysoftware.dev</HeadingItem>
+        <HeadingItem title="GitHub" href="https://github.com/dairyisscary">dairyisscary</HeadingItem>
         <li class="hidden print:inline md:inline">
-          <ResumeIcon class="w-5 h-5 rotate-180" />
+          <ResumeIcon class="h-5 w-5 rotate-180" />
         </li>
       </ul>
     </div>
@@ -86,8 +82,8 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
     <section class="print:col-span-full lg:col-span-full">
       <SectionTitle>The Gist</SectionTitle>
       <p class="print:text-xs">
-        I am a remote engineer with {years.professionalYearsExperience}+ years of professional
-        experience working on web technologies, mostly at startup-sized companies. I have a deep
+        I am a remote software engineer with {years.professionalYearsExperience}+ years of professional
+        experience working at startup-staged companies. I have a deep
         drive to create quality software that empowers its users. I also have a passion for DEI and
         have worked to make technology a more welcoming place for all.
       </p>
@@ -115,11 +111,11 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
             <Fragment slot="location">
               Boston, MA (Remote<Fragment set:html={fromAmsterdam} />)
             </Fragment>
-            Staff Software Engineer
+             Staff Software Engineer
           </RoleTitle>
           <RoleDescription>
-            I am a lead product engineer for the web client architecture on a team of 25+ engineers.
-            I mentor, teach, conduct peer review, and drive modern engineering practices. I also
+            I am a lead product engineer for the web client architecture on a team of 50+ engineers.
+            I mentor, teach, conduct peer review, steward, and drive modern engineering practices. I also
             manage much of the tooling (Webpack, Jest, Babel, etc.) and our DevOps automated
             processes and pipelines. I helped to establish our engineering support and on-call
             processes.
@@ -135,7 +131,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
         <Role>
           <RoleTitle start={2013} end={2017} organization="Shoobx, Inc.">
             <Fragment slot="location">Boston, MA</Fragment>
-            Software Engineer
+             Software Engineer
           </RoleTitle>
           <RoleDescription>
             I was primarily responsible for full-stack product features for a web-based corporate
@@ -175,8 +171,8 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
         <span class="font-semibold">Majors:</span> Computer Science and Philosophy
       </p>
       <p class="text-sm print:text-xs">
-        <span class="font-semibold">Coursework:</span> Algorithms &amp; Datastructures, Operating Systems,
-        Networking, and Ethics
+        <span class="font-semibold">Coursework:</span> Algorithms &amp; Datastructures, Operating
+        Systems, Networking, and Ethics
       </p>
     </section>
   </main>
