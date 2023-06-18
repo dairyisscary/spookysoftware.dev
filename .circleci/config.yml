@@ -18,7 +18,7 @@ commands:
       - run:
           name: Installing pnpm
           command: |
-            sudo npm install -g pnpm@7.27.0
+            sudo npm install -g pnpm@8.6.2
             pnpm config set store-dir /home/circleci/.pnpm-store
 
   install_node_deps:
