@@ -3,7 +3,7 @@ import { request } from "node:http";
 import { chromium } from "playwright";
 
 const HOSTNAME = "localhost";
-const PORT = 3000;
+const PORT = 4321;
 
 function waitFor(time) {
   return new Promise((resolve) => setTimeout(resolve, time));

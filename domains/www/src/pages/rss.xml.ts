@@ -3,7 +3,7 @@ import rss from "@astrojs/rss";
 import { getSortedBlogPosts } from "@/blog/posts";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/site/meta";
 
-export async function get() {
+export async function GET() {
   const posts = await getSortedBlogPosts();
   const now = new Date();
   const lastBuildDate = `<lastBuildDate>${now.toISOString()}</lastBuildDate>`;

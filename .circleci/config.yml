@@ -18,7 +18,7 @@ commands:
       - run:
           name: Installing pnpm
           command: |
-            sudo npm install -g pnpm@8.6.2
+            sudo npm install -g pnpm@8.10.5
             pnpm config set store-dir /home/circleci/.pnpm-store
 
   install_node_deps:
@@ -31,7 +31,7 @@ commands:
 executors:
   default_www_node_env:
     docker:
-      - image: cimg/node:18.16.0
+      - image: cimg/node:20.10.0
     working_directory: << pipeline.parameters.working_directory >>/domains/www
 
   default_awscli_env:
@@ -53,7 +53,9 @@ jobs:
       - install_node_deps
       - run:
           name: Checking Formatting
-          command: pnpm exec prettier --plugin-search-dir=. --check .
+          command: |
+            pnpm exec prettier --check .
+            pnpm exec prettier --check '**/*.astro'
       - run:
           name: Checking Types
           command: |

@@ -28,7 +28,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
     <div class="clamped flex gap-6">
       <img
         class="h-32 w-32 rounded-lg print:h-24 print:w-24 md:h-40 md:w-40 print:md:h-24 print:md:w-24"
-        src={Avatar}
+        src={Avatar.src}
         alt="Headshot photo of Eric"
       />
       <div>
@@ -68,8 +68,12 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
           <ResumeIcon class="h-5 w-5" />
         </li>
         <AntiSpamEmailHeadingItem />
-        <HeadingItem title="Web" href="https://www.spookysoftware.dev/">www.spookysoftware.dev</HeadingItem>
-        <HeadingItem title="GitHub" href="https://github.com/dairyisscary">dairyisscary</HeadingItem>
+        <HeadingItem title="Web" href="https://www.spookysoftware.dev/">
+          {"www.spookysoftware.dev"}
+        </HeadingItem>
+        <HeadingItem title="GitHub" href="https://github.com/dairyisscary">
+          {"dairyisscary"}
+        </HeadingItem>
         <li class="hidden print:inline md:inline">
           <ResumeIcon class="h-5 w-5 rotate-180" />
         </li>
@@ -82,10 +86,10 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
     <section class="print:col-span-full lg:col-span-full">
       <SectionTitle>The Gist</SectionTitle>
       <p class="print:text-xs">
-        I am a remote software engineer with {years.professionalYearsExperience}+ years of professional
-        experience working at startup-staged companies. I have a deep
-        drive to create quality software that empowers its users. I also have a passion for DEI and
-        have worked to make technology a more welcoming place for all.
+        I am a remote software engineer with {years.professionalYearsExperience}+ years of
+        professional experience working at startup-staged companies. I have a deep drive to create
+        quality software that empowers its users. I also have a passion for DEI and have worked to
+        make technology a more welcoming place for all.
       </p>
     </section>
     <section>
@@ -115,8 +119,8 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
           </RoleTitle>
           <RoleDescription>
             I am a lead product engineer for the web client architecture on a team of 50+ engineers.
-            I mentor, teach, conduct peer review, steward, and drive modern engineering practices. I also
-            manage much of the tooling (Webpack, Jest, Babel, etc.) and our DevOps automated
+            I mentor, teach, conduct peer review, steward, and drive modern engineering practices. I
+            also manage much of the tooling (Webpack, Jest, Babel, etc.) and our DevOps automated
             processes and pipelines. I helped to establish our engineering support and on-call
             processes.
           </RoleDescription>
