@@ -10,8 +10,12 @@
     src: url("./AmaticSC-700.woff2") format("woff2");
   }
 
+  html {
+    @apply bg-body-background-light;
+  }
+
   body {
-    @apply min-h-screen bg-body-background-dark text-primary;
+    @apply min-h-screen text-primary;
     background: linear-gradient(
       45deg,
       theme("colors.body-background-dark"),

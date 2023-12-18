@@ -6,13 +6,14 @@ import "./root.css";
 export type Props = {
   content: { title: string; description?: string };
   bodyClass?: string;
+  htmlClass?: string;
 };
 
-const { content, bodyClass } = Astro.props;
+const { content, bodyClass, htmlClass } = Astro.props;
 const { description = SITE_DESCRIPTION, title } = content;
 ---
 
-<html lang="en">
+<html lang="en" class={htmlClass}>
   <head>
     <meta charset="utf-8" />
     <title>{title}</title>
