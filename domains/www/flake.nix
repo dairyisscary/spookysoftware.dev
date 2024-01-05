@@ -15,7 +15,11 @@
 
       devShells = forAllSystems (systemPkgs: {
         default = systemPkgs.mkShell {
-          buildInputs = [ systemPkgs.nodejs-slim systemPkgs.nodePackages.pnpm ];
+          buildInputs = [
+            systemPkgs.nodejs-slim
+            systemPkgs.nodePackages.pnpm
+            systemPkgs.nodePackages.prettier
+          ];
         };
       });
 
