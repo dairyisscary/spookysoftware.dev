@@ -8,10 +8,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
     },
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
-  }
+    "target": "esnext",
+  },
 }

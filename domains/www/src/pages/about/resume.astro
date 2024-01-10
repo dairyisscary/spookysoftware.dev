@@ -28,26 +28,26 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
   <header class="flex flex-col gap-6 pt-5 print:gap-3">
     <div class="clamped flex gap-6">
       <img
-        class="h-32 w-32 rounded-lg print:h-24 print:w-24 md:h-40 md:w-40 print:md:h-24 print:md:w-24"
+        class="h-32 w-32 rounded-lg md:h-40 md:w-40 print:h-24 print:w-24 print:md:h-24 print:md:w-24"
         src={Avatar.src}
         alt="Headshot photo of Eric"
       />
       <div>
         <h1
-          class="mb-1 text-3xl text-resume-highlight print:text-4xl md:text-5xl print:md:text-4xl"
+          class="mb-1 text-3xl text-resume-highlight md:text-5xl print:text-4xl print:md:text-4xl"
         >
           Eric <span class="block font-semibold print:inline">Kim-Butler</span>
         </h1>
         <p>
           Software Engineer
           <span
-            class="block pt-1 text-sm italic text-resume-secondary print:inline print:pl-1 print:pt-0 md:inline md:pl-1 md:pt-0"
+            class="block pt-1 text-sm italic text-resume-secondary md:inline md:pl-1 md:pt-0 print:inline print:pl-1 print:pt-0"
           >
             Amsterdam, The Netherlands
           </span>
         </p>
         <p
-          class="absolute right-0 top-0 rounded-bl bg-resume-context px-2 py-1 text-sm print:hidden md:static md:mt-1 md:rounded-none md:bg-inherit md:px-0"
+          class="absolute right-0 top-0 rounded-bl bg-resume-context px-2 py-1 text-sm md:static md:mt-1 md:rounded-none md:bg-inherit md:px-0 print:hidden"
         >
           <a download="Eric Kim-Butler's Résumé.pdf" href={PDFResume}>
             <span class="md:hidden">PDF</span>
@@ -57,7 +57,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
         <p class="mt-1 hidden text-xs print:inline">
           <span class="text-sm">*</span> This PDF was automatically generated from an
           <Fragment set:html={printLink} />
-           on {formatDate(now)}.
+          on {formatDate(now)}.
         </p>
       </div>
     </div>
@@ -65,7 +65,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
       <ul
         class="clamped flex flex-wrap items-center justify-between gap-4 text-center text-sm sm:flex-nowrap md:text-base print:md:text-sm"
       >
-        <li class="hidden print:inline md:inline">
+        <li class="hidden md:inline print:inline">
           <ResumeIcon class="h-5 w-5" />
         </li>
         <AntiSpamEmailHeadingItem />
@@ -75,16 +75,16 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
         <HeadingItem title="GitHub" href="https://github.com/dairyisscary">
           {"dairyisscary"}
         </HeadingItem>
-        <li class="hidden print:inline md:inline">
+        <li class="hidden md:inline print:inline">
           <ResumeIcon class="h-5 w-5 rotate-180" />
         </li>
       </ul>
     </div>
   </header>
   <main
-    class="clamped grid gap-9 py-9 print:grid-cols-3 print:gap-6 print:gap-y-4 print:py-5 md:grid-cols-2 print:md:grid-cols-3 lg:grid-cols-3 lg:gap-7 lg:py-7"
+    class="clamped grid gap-9 py-9 md:grid-cols-2 lg:grid-cols-3 lg:gap-7 lg:py-7 print:grid-cols-3 print:gap-6 print:gap-y-4 print:py-5 print:md:grid-cols-3"
   >
-    <section class="print:col-span-full lg:col-span-full">
+    <section class="lg:col-span-full print:col-span-full">
       <SectionTitle>The Gist</SectionTitle>
       <p class="print:text-xs">
         I am a remote software engineer with {years.professionalYearsExperience}+ years of
@@ -107,7 +107,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
       </ul>
     </section>
     <section
-      class="flex flex-col rounded bg-resume-context p-5 print:col-span-2 print:row-span-3 print:p-5 md:col-span-2 md:p-7 print:md:p-5 lg:row-span-3"
+      class="flex flex-col rounded bg-resume-context p-5 md:col-span-2 md:p-7 lg:row-span-3 print:col-span-2 print:row-span-3 print:p-5 print:md:p-5"
     >
       <SectionTitle>Work Experience</SectionTitle>
       <ol class="roles invisible flex flex-1 flex-col">
@@ -116,7 +116,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
             <Fragment slot="location">
               Boston, MA (Remote<Fragment set:html={fromAmsterdam} />)
             </Fragment>
-             Staff Software Engineer
+            Staff Software Engineer
           </RoleTitle>
           <RoleDescription>
             I am a lead product engineer for the web client architecture on a team of 50+ engineers.
@@ -136,7 +136,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
         <Role>
           <RoleTitle start={2013} end={2017} organization="Shoobx">
             <Fragment slot="location">Boston, MA</Fragment>
-             Software Engineer
+            Software Engineer
           </RoleTitle>
           <RoleDescription>
             I was primarily responsible for full-stack product features for a web-based corporate
@@ -176,8 +176,8 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
         <span class="font-semibold">Majors:</span> Computer Science and Philosophy
       </p>
       <p class="text-sm print:text-xs">
-        <span class="font-semibold">Coursework:</span> Algorithms &amp; Datastructures, Operating
-        Systems, Networking, and Ethics
+        <span class="font-semibold">Coursework:</span> Algorithms &amp; Datastructures, Operating Systems,
+        Networking, and Ethics
       </p>
     </section>
   </main>
