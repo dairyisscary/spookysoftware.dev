@@ -1,5 +1,5 @@
 {
-  description = "spookysoftware";
+  description = "Spooky Software www Domain";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -13,15 +13,23 @@
     in
     {
 
-      devShells = forAllSystems (systemPkgs: {
-        default = systemPkgs.mkShell {
-          buildInputs = [
-            systemPkgs.nodejs-slim
-            systemPkgs.nodePackages.pnpm
-            systemPkgs.nodePackages.prettier
-          ];
-        };
-      });
+      devShells = forAllSystems (pkgs:
+        let
+          nodejs = pkgs.nodejs_22;
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = [
+              nodejs
+              nodejs.pkgs.pnpm
+              (pkgs.writeScriptBin "prettier" ''
+                #!${pkgs.bash}/bin/bash
+                set -euo pipefail
+                ${nodejs.pkgs.pnpm}/bin/pnpm exec prettier "$@"
+              '')
+            ];
+          };
+        });
 
     };
 }
