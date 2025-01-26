@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "lib": ["esnext", "dom"],
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "isolatedModules": true,
     "noEmit": true,
     "paths": {
@@ -13,5 +13,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext"
-  }
+  },
+  "exclude": ["dist"],
+  "include": [".astro/types.d.ts", "**/*"]
 }
