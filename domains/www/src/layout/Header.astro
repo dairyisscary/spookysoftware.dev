@@ -3,7 +3,9 @@ import { SITE_NAME } from "@/site/meta";
 ---
 
 <header class="mb-16 flex items-center justify-between py-4">
-  <h1 class="site-title font-cursive text-4xl font-bold tracking-widest text-highlight">
+  <h1
+    class="site-title font-cursive text-highlight text-4xl font-bold tracking-widest motion-reduce:animate-none motion-reduce:text-shadow-[0_0_8px_var(--color-highlight)]"
+  >
     <a class="no-underline" href="/">{SITE_NAME}</a>
   </h1>
   <nav class="flex">
@@ -12,15 +14,10 @@ import { SITE_NAME } from "@/site/meta";
 </header>
 
 <style>
+  @reference "@/site/root.css";
+
   .site-title {
     animation: flicker 6s infinite alternate;
-  }
-
-  @media (prefers-reduced-motion) {
-    .site-title {
-      animation: none;
-      text-shadow: 0 0 8px theme("colors.highlight");
-    }
   }
 
   @keyframes flicker {
@@ -33,7 +30,7 @@ import { SITE_NAME } from "@/site/meta";
     70%,
     100% {
       opacity: 1;
-      text-shadow: 0 0 8px theme("colors.highlight");
+      text-shadow: 0 0 8px var(--color-highlight);
     }
     20%,
     21.999%,

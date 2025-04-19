@@ -12,14 +12,16 @@ const width = `${Math.min(100, Math.max(0, value * 100))}%`;
   <div class="col-span-2 w-5/12 pr-1.5 text-sm lg:w-2/3 print:text-xs">
     {title}
   </div>
-  <div class="h-2 flex-1 overflow-hidden rounded-sm bg-resume-context">
-    <div class="level h-full bg-resume-context-accent" style={`width:${width}`} aria-hidden="true">
+  <div class="bg-resume-context h-2 flex-1 overflow-hidden rounded-xs">
+    <div class="level bg-resume-context-accent h-full" style={`width:${width}`} aria-hidden="true">
     </div>
     <span class="sr-only">{width} out of 100</span>
   </div>
 </li>
 
 <style>
+  @reference "@/site/root.css";
+
   .skill:hover .level {
     animation: fill-width 0.5s ease-out;
     @apply motion-reduce:animate-none;

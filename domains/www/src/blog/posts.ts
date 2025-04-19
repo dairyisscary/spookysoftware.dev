@@ -5,7 +5,7 @@ type Frontmatter = {
 };
 type BlogModule = {
   url: string;
-  compiledContent: () => string;
+  compiledContent: () => Promise<string>;
   frontmatter: Frontmatter;
 };
 type BlogPost = {
@@ -27,18 +27,21 @@ async function getBlogs(): Promise<BlogModule[]> {
 }
 
 export async function getSortedBlogPosts(): Promise<BlogPost[]> {
-  const posts = await getBlogs();
-  return posts
-    .map((blogModule) => {
-      const { url, frontmatter, compiledContent } = blogModule;
-      return {
-        title: frontmatter.title,
-        url,
-        html: compiledContent(),
-        publishDate: new Date(frontmatter.publishDate),
-        modifiedDate: frontmatter.modifiedDate ? new Date(frontmatter.modifiedDate) : null,
-      };
-    })
+  const blogModules = await getBlogs();
+  const blogMoudlesWithContent = await Promise.all(
+    blogModules.map(async (blogModule) => ({
+      html: await blogModule.compiledContent(),
+      blogModule,
+    })),
+  );
+  return blogMoudlesWithContent
+    .map(({ html, blogModule: { url, frontmatter } }) => ({
+      title: frontmatter.title,
+      url,
+      html,
+      publishDate: new Date(frontmatter.publishDate),
+      modifiedDate: frontmatter.modifiedDate ? new Date(frontmatter.modifiedDate) : null,
+    }))
     .sort(sortPosts);
 }
 

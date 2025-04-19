@@ -2,16 +2,11 @@
   "compilerOptions": {
     "allowJs": false,
     "baseUrl": ".",
-    "lib": ["esnext", "dom"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "isolatedModules": true,
-    "noEmit": true,
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext"
-  }
+    }
+  },
+  "exclude": ["dist"],
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"]
 }

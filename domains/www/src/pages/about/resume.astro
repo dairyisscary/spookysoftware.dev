@@ -34,20 +34,20 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
       />
       <div>
         <h1
-          class="mb-1 text-3xl text-resume-highlight md:text-5xl print:text-4xl print:md:text-4xl"
+          class="text-resume-highlight mb-1 text-3xl md:text-5xl print:text-4xl print:md:text-4xl"
         >
           Eric <span class="block font-semibold print:inline">Kim-Butler</span>
         </h1>
         <p>
           Software Engineer
           <span
-            class="block pt-1 text-sm italic text-resume-secondary md:inline md:pl-1 md:pt-0 print:inline print:pl-1 print:pt-0"
+            class="text-resume-secondary block pt-1 text-sm italic md:inline md:pt-0 md:pl-1 print:inline print:pt-0 print:pl-1"
           >
             Amsterdam, The Netherlands
           </span>
         </p>
         <p
-          class="absolute right-0 top-0 rounded-bl bg-resume-context px-2 py-1 text-sm md:static md:mt-1 md:rounded-none md:bg-inherit md:px-0 print:hidden"
+          class="bg-resume-context absolute top-0 right-0 rounded-bl-sm px-2 py-1 text-sm md:static md:mt-1 md:rounded-none md:bg-inherit md:px-0 print:hidden"
         >
           <a download="Eric Kim-Butler's Résumé.pdf" href={PDFResume}>
             <span class="md:hidden">PDF</span>
@@ -61,7 +61,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
         </p>
       </div>
     </div>
-    <div class="border-y border-resume-context-accent bg-resume-context py-3">
+    <div class="border-resume-context-accent bg-resume-context border-y py-3">
       <ul
         class="clamped flex flex-wrap items-center justify-between gap-4 text-center text-sm sm:flex-nowrap md:text-base print:md:text-sm"
       >
@@ -107,7 +107,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
       </ul>
     </section>
     <section
-      class="flex flex-col rounded bg-resume-context p-5 md:col-span-2 md:p-7 lg:row-span-3 print:col-span-2 print:row-span-3 print:p-5 print:md:p-5"
+      class="bg-resume-context flex flex-col rounded-sm p-5 md:col-span-2 md:p-7 lg:row-span-3 print:col-span-2 print:row-span-3 print:p-5 print:md:p-5"
     >
       <SectionTitle>Work Experience</SectionTitle>
       <ol class="roles invisible flex flex-1 flex-col">
@@ -171,7 +171,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
     <section>
       <SectionTitle>Education</SectionTitle>
       <h3 class="text-lg font-semibold print:text-base">Bachelors of Science</h3>
-      <h4 class="mb-3 text-resume-secondary print:text-sm">Wilkes University | 2009-2013</h4>
+      <h4 class="text-resume-secondary mb-3 print:text-sm">Wilkes University | 2009-2013</h4>
       <p class="text-sm print:text-xs">
         <span class="font-semibold">Majors:</span> Computer Science and Philosophy
       </p>
@@ -184,6 +184,8 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
 </RootLayout>
 
 <style>
+  @reference "@/site/root.css";
+
   .clamped {
     width: min(100%, 73rem);
     @apply mx-auto px-5;

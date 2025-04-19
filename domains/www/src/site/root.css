@@ -1,6 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-cursive: "Amatic SC", cursive;
+
+  --color-body-background-light: #402f51;
+  --color-body-background-dark: #281f33;
+  --color-primary: #a6bccc;
+  --color-title: #dff0ea;
+  --color-highlight: #f48256;
+  --color-resume-body-background-light: #fff8f0;
+  --color-resume-primary: #2f4550;
+  --color-resume-secondary: #657882;
+  --color-resume-context-accent: #50c5b7;
+  --color-resume-context: #b6e8e1;
+  --color-resume-highlight: #f24236;
+}
 
 @layer base {
   @font-face {
@@ -15,12 +29,7 @@
   }
 
   body {
-    @apply min-h-screen text-primary;
-    background: linear-gradient(
-      45deg,
-      theme("colors.body-background-dark"),
-      theme("colors.body-background-light")
-    );
+    @apply text-primary from-body-background-dark to-body-background-light min-h-screen bg-linear-45;
   }
 
   a {

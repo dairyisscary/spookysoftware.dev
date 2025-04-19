@@ -11,7 +11,9 @@ const posts = await getSortedBlogPosts();
 
 <SpookyRootLayout>
   <section slot="headsup" class="mb-20">
-    <div class="hello mb-2 font-serif text-3xl text-highlight">
+    <div
+      class="text-highlight mb-2 font-serif text-3xl text-shadow-[0_0_40px_rgba(255,255,255,0.4)]"
+    >
       Hi, I'm Eric. I'm a software engineer, and this is where I write my complaints.
     </div>
     <p>This blog explores the crazy blend of ethics, software, and shit we call technology.</p>
@@ -33,9 +35,3 @@ const posts = await getSortedBlogPosts();
     ))
   }
 </SpookyRootLayout>
-
-<style>
-  .hello {
-    text-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
-  }
-</style>

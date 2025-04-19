@@ -1,12 +1,18 @@
 import { defineConfig } from "astro/config";
-import tailwindIntegration from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  integrations: [tailwindIntegration({ applyBaseStyles: false }), mdx()],
+  integrations: [mdx()],
+
   markdown: {
     shikiConfig: { theme: "rose-pine" },
   },
+
   site: "https://www.spookysoftware.dev/",
   trailingSlash: "always",
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

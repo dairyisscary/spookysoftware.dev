@@ -1,22 +1,20 @@
-<div class="content">
+<div class="content mt-7 leading-relaxed">
   <slot />
 </div>
 
 <style>
-  .content {
-    @apply mt-7 leading-relaxed;
-  }
+  @reference "@/site/root.css";
 
   .content :global(blockquote) {
-    @apply ml-0 border-l-4 border-solid border-title pl-4 italic;
+    @apply border-title ml-0 border-l-4 border-solid pl-4 italic;
   }
 
   .content :global(h2) {
-    @apply font-serif text-2xl text-title;
+    @apply text-title font-serif text-2xl;
   }
 
   .content :global(h3) {
-    @apply text-xl text-title;
+    @apply text-title text-xl;
   }
 
   .content :global(h4) {
@@ -42,7 +40,7 @@
 
   .content :global(ol),
   .content :global(ul) {
-    @apply ml-8 mr-5;
+    @apply mr-5 ml-8;
   }
 
   .content :global(ul) {
@@ -54,10 +52,10 @@
   }
 
   .content :global(*:not(pre) > code) {
-    @apply rounded-sm bg-title p-0.5 text-body-background-light;
+    @apply bg-title text-body-background-light rounded-xs p-0.5;
   }
 
   .content :global(pre) {
-    @apply min-w-full rounded border border-primary border-opacity-30 px-4 py-3;
+    @apply border-primary/30 min-w-full rounded-sm border px-4 py-3;
   }
 </style>
