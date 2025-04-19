@@ -16,7 +16,6 @@ import RootLayout from "@/site/Root.astro";
 
 const now = new Date();
 const years = computeYearsExperience();
-const fromAmsterdam = '<span class="hidden md:inline"> from Amsterdam</span>';
 const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online version</a>';
 ---
 
@@ -43,7 +42,7 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
           <span
             class="text-resume-secondary block pt-1 text-sm italic md:inline md:pt-0 md:pl-1 print:inline print:pt-0 print:pl-1"
           >
-            Amsterdam, The Netherlands
+            Philadelphia, USA
           </span>
         </p>
         <p
@@ -112,29 +111,36 @@ const printLink = '<a href="https://www.spookysoftware.dev/about/resume/">online
       <SectionTitle>Work Experience</SectionTitle>
       <ol class="roles invisible flex flex-1 flex-col">
         <Role>
-          <RoleTitle start={2017} organization="Proof">
-            <Fragment slot="location">
-              Boston, MA (Remote<Fragment set:html={fromAmsterdam} />)
-            </Fragment>
+          <RoleTitle start={2024} organization="Twelve AI">
+            <Fragment slot="location">Remote</Fragment>
+            Software Engineer
+          </RoleTitle>
+          <RoleDescription>
+            I work on a small team writing dental practice management software.
+          </RoleDescription>
+        </Role>
+        <Role>
+          <RoleTitle start={2017} end={2024} organization="Proof, Inc.">
+            <Fragment slot="location">Remote</Fragment>
             Staff Software Engineer
           </RoleTitle>
           <RoleDescription>
-            I am a lead product engineer for the web client architecture on a team of 50+ engineers.
-            I mentor, teach, conduct peer review, steward, and drive modern engineering practices. I
-            also manage much of the tooling (Webpack, Jest, Babel, etc.) and our DevOps automated
-            processes and pipelines. I helped to establish our engineering support and on-call
-            processes.
+            I was a lead product engineer for the web client architecture on a team of 50+
+            engineers. I mentored, taught, conducted peer review, and drove modern engineering
+            practices. I also managed much of the tooling (Webpack, Jest, Babel, etc.) and our
+            DevOps automated processes and pipelines. I helped to establish our engineering support
+            and on-call processes.
           </RoleDescription>
           <RoleDescription>
-            As an individual contributor, I also write, design, and maintain many vertical,
-            customer-facing features (TypeScript, GraphQL, React). Some notable features include our
+            As an individual contributor, I also wrote, designed, and maintained many vertical,
+            customer-facing features (TypeScript, GraphQL, React). Some notable features include
             WebRTC audio and video calling, real-time PDF collaboration and signing experience,
-            automated credential analysis, fraud protection, and mission-critical legal audit
+            automated credential analysis, AI fraud protection, and mission-critical legal audit
             trailing.
           </RoleDescription>
         </Role>
         <Role>
-          <RoleTitle start={2013} end={2017} organization="Shoobx">
+          <RoleTitle start={2013} end={2017} organization="Shoobx, Inc.">
             <Fragment slot="location">Boston, MA</Fragment>
             Software Engineer
           </RoleTitle>
