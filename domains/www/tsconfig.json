@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
-    "allowJs": false,
-    "baseUrl": ".",
+    "jsx": "preserve",
+    "jsxImportSource": "@solidjs/web",
+    "lib": ["esnext", "dom"],
+    "module": "preserve",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "noEmit": true,
     "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "exclude": ["dist"],
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"]
+      "#/*": ["./src/*"]
+    },
+    "skipLibCheck": true,
+    "types": ["vite/client"]
+  }
 }

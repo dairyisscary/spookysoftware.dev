@@ -1,8 +1,7 @@
----
-title: Leading Meaningful Work in Technology
-publishDate: 2021-09-10T00:00:00Z
-layout: "@/layout/Page.astro"
----
++++
+title = "Leading Meaningful Work in Technology"
+publishDate = "2021-09-10T00:00:00Z"
++++
 
 > Organizations that move our soul have a clear vision -- a vision that elevates the mundane and repetitive into
 > something exciting and life-giving.

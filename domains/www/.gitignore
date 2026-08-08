@@ -1,2 +1,6 @@
 /node_modules/
+
 /.direnv/
+
+/dist/
+/src/site/file-routes.d.ts

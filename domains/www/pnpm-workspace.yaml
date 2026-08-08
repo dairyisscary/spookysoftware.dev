@@ -1,4 +1,4 @@
 allowBuilds:
   esbuild: true
-  sharp: true
+minimumReleaseAge: 0 # TODO 10080 # 1 week
 updateNotifier: false

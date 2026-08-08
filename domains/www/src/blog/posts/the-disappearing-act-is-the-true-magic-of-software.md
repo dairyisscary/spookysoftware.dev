@@ -1,8 +1,7 @@
----
-title: The Disappearing Act is The True Magic of Software
-publishDate: 2024-01-10T16:00:00.000Z
-layout: "@/layout/Page.astro"
----
++++
+title = "The Disappearing Act is The True Magic of Software"
+publishDate = "2024-01-10T16:00:00.000Z"
++++
 
 > We are stuck with technology when what we really want is just stuff that works.
 >

@@ -4,45 +4,45 @@ type Frontmatter = {
   modifiedDate?: string;
 };
 type BlogModule = {
-  url: string;
-  compiledContent: () => Promise<string>;
+  html: string;
   frontmatter: Frontmatter;
 };
 type BlogPost = {
   title: string;
-  url: string;
+  slug: string;
   html: string;
   publishDate: Date;
   modifiedDate: Date | null;
 };
 
+const BLOG_MODULES = import.meta.glob<BlogModule>("./posts/*.md", { eager: true });
+
 function sortPosts(a: BlogPost, b: BlogPost): number {
   return b.publishDate.valueOf() - a.publishDate.valueOf();
 }
 
-async function getBlogs(): Promise<BlogModule[]> {
-  const moduleMap = import.meta.glob<BlogModule>("../pages/blog/*/index.md");
-  const postLoaders = Object.values(moduleMap).map((getModule) => getModule());
-  return Promise.all(postLoaders);
+function getSlugFromModulePath(path: string): string {
+  return path.match(/^\.\/posts\/(.+)\.md$/)![1];
 }
 
-export async function getSortedBlogPosts(): Promise<BlogPost[]> {
-  const blogModules = await getBlogs();
-  const blogMoudlesWithContent = await Promise.all(
-    blogModules.map(async (blogModule) => ({
-      html: await blogModule.compiledContent(),
-      blogModule,
-    })),
-  );
-  return blogMoudlesWithContent
-    .map(({ html, blogModule: { url, frontmatter } }) => ({
-      title: frontmatter.title,
-      url,
-      html,
-      publishDate: new Date(frontmatter.publishDate),
-      modifiedDate: frontmatter.modifiedDate ? new Date(frontmatter.modifiedDate) : null,
-    }))
+function asBlogPost({ html, frontmatter }: BlogModule, slug: string): BlogPost {
+  return {
+    title: frontmatter.title,
+    slug,
+    html,
+    publishDate: new Date(frontmatter.publishDate),
+    modifiedDate: frontmatter.modifiedDate ? new Date(frontmatter.modifiedDate) : null,
+  };
+}
+
+export function getSortedBlogPosts(): BlogPost[] {
+  return Object.entries(BLOG_MODULES)
+    .map(([modulePath, blogModule]) => asBlogPost(blogModule, getSlugFromModulePath(modulePath)))
     .sort(sortPosts);
+}
+
+export function getBlogPost(slug: string): BlogPost {
+  return asBlogPost(BLOG_MODULES[`./posts/${slug}.md`], slug);
 }
 
 export function getHTMLExcerpt(html: string): string | null {

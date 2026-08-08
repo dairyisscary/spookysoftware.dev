@@ -1,8 +1,7 @@
----
-title: Programs Beyond the Pipeline
-publishDate: 2022-12-29T00:00:00Z
-layout: "@/layout/Page.astro"
----
++++
+title = "Programs Beyond the Pipeline"
+publishDate = "2022-12-29T00:00:00Z"
++++
 
 > [I am] Becoming more and more aware that languages in the ML tradition (Haskell, Rust, OCaml, etc) are about a certain
 > kind of linguistic game that the developers have fun playing, and not because it makes any software arrive quicker,

@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* TODO do we need both fonts */
+/* TODO do we need opsz ? */
+@font-face {
+  font-family: "Source Serif 4 Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url(@fontsource-variable/source-serif-4/files/source-serif-4-latin-opsz-normal.woff2)
+    format("woff2-variations");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Source Serif 4 Variable";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url(@fontsource-variable/source-serif-4/files/source-serif-4-latin-opsz-italic.woff2)
+    format("woff2-variations");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --sps-900: #00202e;
+  --sps-800: #003f5c;
+  --sps-700: #2c4875;
+  --sps-600: #8a508f;
+  --sps-500: #bc5090;
+  --sps-400: #ff6361;
+  --sps-300: #ff8531;
+  --sps-200: #ffa600;
+  --sps-100: #ffd380;
+}
+
+@theme inline {
+  --animate-parallax: parallax linear;
+
+  --font-sps-serif: "Source Serif 4 Variable", serif;
+
+  --color-sps-bg-dark: var(--sps-900);
+  --color-sps-bg: var(--sps-800);
+  --color-sps-bg-light: var(--sps-700);
+  --color-sps-accent-dark: var(--sps-600);
+  --color-sps-accent: var(--sps-500);
+  --color-sps-accent-light: var(--sps-400);
+  --color-sps-fg-dark: var(--sps-300);
+  --color-sps-fg: var(--sps-200);
+  --color-sps-fg-light: var(--sps-100);
+
+  @keyframes parallax {
+    to {
+      transform: translateY(calc(1% * var(--parallax-speed, 1)));
+    }
+  }
+}
+
+@layer base {
+  html,
+  body {
+    @apply min-h-dvh bg-sps-bg font-sans text-sps-fg-light antialiased;
+  }
+
+  a {
+    @apply underline underline-offset-2;
+  }
+
+  p {
+    @apply text-pretty wrap-break-word;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-balance wrap-break-word;
+  }
+}
+
+@layer components {
+  .main-contain {
+    @apply mx-auto px-4;
+    width: min(100%, 960px);
+  }
+
+  .sps-rainbow {
+    --block-sizing: max(2dvw, calc(var(--spacing) * 4));
+    background: repeating-linear-gradient(
+      to right,
+      var(--sps-900) var(--block-sizing),
+      var(--sps-800) var(--block-sizing),
+      var(--sps-800) calc(2 * var(--block-sizing)),
+      var(--sps-700) calc(2 * var(--block-sizing)),
+      var(--sps-700) calc(3 * var(--block-sizing)),
+      var(--sps-600) calc(3 * var(--block-sizing)),
+      var(--sps-600) calc(4 * var(--block-sizing)),
+      var(--sps-500) calc(4 * var(--block-sizing)),
+      var(--sps-500) calc(5 * var(--block-sizing)),
+      var(--sps-400) calc(5 * var(--block-sizing)),
+      var(--sps-400) calc(6 * var(--block-sizing)),
+      var(--sps-300) calc(6 * var(--block-sizing)),
+      var(--sps-300) calc(7 * var(--block-sizing)),
+      var(--sps-200) calc(7 * var(--block-sizing)),
+      var(--sps-200) calc(8 * var(--block-sizing)),
+      var(--sps-100) calc(8 * var(--block-sizing)),
+      var(--sps-100) calc(9 * var(--block-sizing)),
+      var(--sps-200) calc(9 * var(--block-sizing)),
+      var(--sps-200) calc(10 * var(--block-sizing)),
+      var(--sps-300) calc(10 * var(--block-sizing)),
+      var(--sps-300) calc(11 * var(--block-sizing)),
+      var(--sps-400) calc(11 * var(--block-sizing)),
+      var(--sps-400) calc(12 * var(--block-sizing)),
+      var(--sps-500) calc(12 * var(--block-sizing)),
+      var(--sps-500) calc(13 * var(--block-sizing)),
+      var(--sps-600) calc(13 * var(--block-sizing)),
+      var(--sps-600) calc(14 * var(--block-sizing)),
+      var(--sps-700) calc(14 * var(--block-sizing)),
+      var(--sps-700) calc(15 * var(--block-sizing)),
+      var(--sps-800) calc(15 * var(--block-sizing)),
+      var(--sps-800) calc(16 * var(--block-sizing)),
+      var(--sps-900) calc(16 * var(--block-sizing)),
+      var(--sps-900) calc(17 * var(--block-sizing))
+    );
+  }
+}
+
+@utility animation-root-scroll {
+  animation-timeline: scroll(root block);
+}
+
+@utility animation-range-* {
+  /* TODO can we do better than guessing? */
+  animation-range: --value([*]);
+}

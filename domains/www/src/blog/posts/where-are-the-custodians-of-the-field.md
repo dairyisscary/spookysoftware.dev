@@ -1,9 +1,8 @@
----
-title: Where Are the Custodians of the Field?
-publishDate: 2020-02-10T00:00:00Z
-modifiedDate: 2021-08-11T00:00:00Z
-layout: "@/layout/Page.astro"
----
++++
+title = "Where Are the Custodians of the Field?"
+publishDate = "2020-02-10T00:00:00Z"
+modifiedDate = "2021-08-11T00:00:00Z"
++++
 
 > If software abstraction actually worked the way people pretend, then the "higher-level" you go, the more insulated you
 > would be from implementation. Javascript in a browser would be the most stable, robust, unperturbable software,

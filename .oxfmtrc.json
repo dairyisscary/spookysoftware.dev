@@ -5,7 +5,7 @@
       "files": ["./domains/www/**"],
       "options": {
         "sortTailwindcss": {
-          "stylesheet": "./domains/www/src/site/root.css",
+          "stylesheet": "./domains/www/src/app.css"
         }
       }
     }

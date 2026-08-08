@@ -1,8 +1,7 @@
----
-title: Hello World
-publishDate: 2020-01-28T00:15:03.870Z
-layout: "@/layout/Page.astro"
----
++++
+title = "Hello World"
+publishDate = "2020-01-28T00:15:03.870Z"
++++
 
 Hello world!
 

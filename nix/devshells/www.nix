@@ -10,5 +10,9 @@ flake.lib.mkMinimalShell pkgs {
     nodejs.out
     pnpm
     flake.formatter.${pkgs.stdenv.system}.passthru.formatters.oxfmt
+    (pkgs.writeShellScriptBin "dev" /* lang bash */ ''
+      set -e
+      pnpm exec vite --config-loader native
+    '')
   ];
 }
