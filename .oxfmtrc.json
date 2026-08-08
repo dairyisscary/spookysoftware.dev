@@ -1,0 +1,15 @@
+{
+  "overrides": [
+    { "files": ["*.md"], "options": { "printWidth": 120 } },
+    {
+      "files": ["./domains/www/**"],
+      "options": {
+        "sortTailwindcss": {
+          "stylesheet": "./domains/www/src/site/root.css",
+        }
+      }
+    }
+  ],
+  "proseWrap": "always",
+  "sortImports": {}
+}

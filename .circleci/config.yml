@@ -18,8 +18,19 @@ commands:
       - run:
           name: Installing pnpm
           command: |
-            sudo npm install -g pnpm@10.0.0
+            sudo npm install -g pnpm@11.20.0
             pnpm config set store-dir /home/circleci/.pnpm-store
+
+  install_opentofu:
+    description: Install OpenTofu
+    steps:
+      - run:
+          name: Installing OpenTofu
+          command: |
+            curl --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-opentofu.sh -o install-opentofu.sh
+            chmod +x install-opentofu.sh
+            OPENTOFU_VERSION=1.12.5 ./install-opentofu.sh --install-method standalone
+            rm -f install-opentofu.sh
 
   install_node_deps:
     description: Install and Link Node Deps
@@ -31,7 +42,7 @@ commands:
 executors:
   default_www_node_env:
     docker:
-      - image: cimg/node:22.12.0
+      - image: cimg/node:24.19.0
     working_directory: << pipeline.parameters.working_directory >>/domains/www
 
   default_awscli_env:
@@ -39,9 +50,9 @@ executors:
       - image: dairyisscary/awscli:2.6.1
     working_directory: << pipeline.parameters.working_directory >>
 
-  default_terraform_env:
+  default_base_env:
     docker:
-      - image: dairyisscary/terraform:1.1.7
+      - image: cimg/base:2026.08
     working_directory: << pipeline.parameters.working_directory >>/infra
 
 jobs:
@@ -51,11 +62,6 @@ jobs:
       - checkout_monorepo
       - install_pnpm
       - install_node_deps
-      - run:
-          name: Checking Formatting
-          command: |
-            pnpm exec prettier --check .
-            pnpm exec prettier --check '**/*.astro'
       - run:
           name: Checking Types
           command: |
@@ -88,18 +94,19 @@ jobs:
             - domains/www/dist
 
   deploy_infrastructure:
-    executor: default_terraform_env
+    executor: default_base_env
     steps:
       - checkout_monorepo
+      - install_opentofu
       - run:
-          name: Initing Terraform
-          command: terraform init
+          name: Initing OpenTofu
+          command: tofu init
       - run:
           name: Forming Infrastructure
           command: |
             mkdir -p output
-            terraform apply -auto-approve
-            terraform output -json > output/terraform.json
+            tofu apply -auto-approve
+            tofu output -json > output/tofu.json
       - persist_to_workspace:
           root: << pipeline.parameters.working_directory >>
           paths:
@@ -115,11 +122,11 @@ jobs:
           command: |
             cd << pipeline.parameters.working_directory >>/domains/www/dist
 
-            TERRAFORM_OUTPUT="$(cat ../../../infra/output/terraform.json)"
+            TOFU_OUTPUT="$(cat ../../../infra/output/tofu.json)"
             ONE_YEAR="31536000"
             FIVE_MINUTES="300"
 
-            BUCKET_NAME="$(echo $TERRAFORM_OUTPUT | jq '.www_static_bucket_name.value' -r)"
+            BUCKET_NAME="$(echo $TOFU_OUTPUT | jq '.www_static_bucket_name.value' -r)"
             BROWSER_EXPIRES="public, max-age=$FIVE_MINUTES, s-maxage=$ONE_YEAR, must-revalidate"
             BROWSER_IMMUTABLE="public, max-age=$ONE_YEAR, immutable"
 
@@ -131,7 +138,7 @@ jobs:
             aws s3 cp --recursive --metadata-directive REPLACE --cache-control "$BROWSER_IMMUTABLE" _astro "s3://$BUCKET_NAME/_astro"
 
             # Now purge the CDN
-            CLOUDFLARE_ZONE_ID="$(echo $TERRAFORM_OUTPUT | jq '.cloudflare_zone_id.value' -r)"
+            CLOUDFLARE_ZONE_ID="$(echo $TOFU_OUTPUT | jq '.cloudflare_zone_id.value' -r)"
             curl -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
               -H "Content-Type: application/json" \
               -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \

@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 1.1.7"
+  required_version = "~> 1.12.5"
 
   required_providers {
     aws = {
@@ -127,7 +127,7 @@ resource "cloudflare_ruleset" "transform_http_headers" {
     expression  = "any(http.response.headers[\"content-type\"][*] contains \"text/html\")"
 
     action_parameters {
-      # Keep these alphabetized by name so that terraform doesn't diff
+      # Keep these alphabetized by name so that there is no infra diff
       headers {
         operation = "set"
         name      = "Referrer-Policy"
