@@ -1,3 +1,4 @@
-/.secrets
-/.opentofu
+/.secrets/
+/.wrangler/
+/infra/.terraform/
 /result

@@ -1,4 +1,8 @@
 allowBuilds:
   esbuild: true
-  sharp: true
+minimumReleaseAge: 10080 # 1 week
+minimumReleaseAgeExclude:
+  - "@solidjs/*"
+  - filesystem-routing
+  - solid-js
 updateNotifier: false

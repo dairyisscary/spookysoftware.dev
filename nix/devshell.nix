@@ -1,24 +1,26 @@
 { flake, pkgs, ... }:
-let
-  pwd = builtins.getEnv "PWD";
-  secretsDir = "${pwd}/.secrets";
-  cloudflareAPITokenFile = "${secretsDir}/cloudflare-api-token";
-in
 flake.lib.mkMinimalShell pkgs {
   name = "spookysoftware-infra-devshell";
 
   packages = [
+    pkgs.nushell
     pkgs.opentofu
-    pkgs.awscli2
+    pkgs.wrangler
   ];
 
-  shellHook = /* lang bash */ ''
-    export AWS_PROFILE="production"
-    export SPOOKY_ROOT="${pwd}"
-    export CLOUDFLARE_API_TOKEN_FILE="${cloudflareAPITokenFile}"
-    export TF_VAR_cloudflare_api_token_file="${cloudflareAPITokenFile}"
-    export TF_DATA_DIR="${pwd}/.opentofu"
-    export TF_VAR_cloudflare_theater_tunnel_password_file="${secretsDir}/cloudflare-theater-tunnel-password"
-    export AWS_SHARED_CREDENTIALS_FILE="${secretsDir}/aws-credentials"
+  env =
+    let
+      cloudflareAccountId = "a135e34dcd53a22a339f6a334d0281db";
+    in
+    {
+      AWS_PROFILE = "production";
+      CLOUDFLARE_ACCOUNT_ID = cloudflareAccountId;
+      TF_VAR_cloudflare_account_id = cloudflareAccountId;
+    };
+
+  shellHook = ''
+    export AWS_SHARED_CREDENTIALS_FILE="$(pwd)/.secrets/aws-credentials"
+    export CLOUDFLARE_API_TOKEN="$(cat "$(pwd)/.secrets/cloudflare-api-token" | xargs)"
+    export TF_VAR_cloudflare_api_token="$CLOUDFLARE_API_TOKEN"
   '';
 }

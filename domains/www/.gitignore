@@ -1,4 +1,8 @@
-dist/
-node_modules/
-.direnv/
-.astro/
+/node_modules/
+
+/.direnv/
+
+/result
+
+/dist/
+/src/site/virtual:file-routes.d.ts

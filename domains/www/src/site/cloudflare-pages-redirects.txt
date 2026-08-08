@@ -1,0 +1,8 @@
+# The astro -> solid migration included removing trailing slashes from requests
+/about/ /about 301
+/about/resume/ /about/resume 301
+/blog/the-disappearing-act-is-the-true-magic-of-software/ /blog/the-disappearing-act-is-the-true-magic-of-software 301
+/blog/programs-beyond-the-pipeline/ /blog/programs-beyond-the-pipeline 301
+/blog/where-are-the-custodians-of-the-field/ /blog/where-are-the-custodians-of-the-field 301
+/blog/leading-meaningful-work-in-technology/ /blog/leading-meaningful-work-in-technology 301
+/blog/hello-world/ /blog/hello-world 301

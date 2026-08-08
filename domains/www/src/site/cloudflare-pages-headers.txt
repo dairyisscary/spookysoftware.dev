@@ -1,0 +1,8 @@
+/*
+  Content-Security-Policy: base-uri 'none';object-src 'none';frame-ancestors 'none'
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

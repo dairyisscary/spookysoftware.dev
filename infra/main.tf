@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 1.12.5"
+  required_version = "~> 1.12.6"
 
   backend "s3" {
     bucket = "dairyisscary-terraform-state"
@@ -8,72 +8,41 @@ terraform {
   }
 
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.14.0"
-    }
-
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "~> 3.14.0"
+      version = "~> 5.24.0"
     }
   }
+}
+
+provider "cloudflare" {
+  api_token = var.cloudflare_api_token
 }
 
 locals {
   root_domain = "spookysoftware.dev"
 }
 
-provider "aws" {
-  region = "us-east-1"
+variable "cloudflare_api_token" {
+  type = string
 }
 
-provider "cloudflare" {}
-
-resource "cloudflare_zone" "root_zone" {
-  zone = local.root_domain
-}
-
-resource "cloudflare_record" "root" {
-  zone_id = cloudflare_zone.root_zone.id
-  type    = "CNAME"
-  name    = "@"
-  value   = "www.${local.root_domain}"
-  proxied = true
-}
-
-resource "cloudflare_record" "spf" {
-  zone_id = cloudflare_zone.root_zone.id
-  type    = "TXT"
-  name    = "@"
-  value   = "v=spf1 -all"
-}
-
-resource "cloudflare_record" "dkim" {
-  zone_id = cloudflare_zone.root_zone.id
-  type    = "TXT"
-  name    = "*._domainkey"
-  value   = "v=DKIM1; p="
-}
-
-resource "cloudflare_record" "dmarc" {
-  zone_id = cloudflare_zone.root_zone.id
-  type    = "TXT"
-  name    = "_dmarc"
-  value   = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
+variable "cloudflare_account_id" {
+  type = string
 }
 
 module "www" {
   source = "../domains/www/infra"
 
-  root_domain     = local.root_domain
-  cf_root_zone_id = cloudflare_zone.root_zone.id
-}
-
-output "www_static_bucket_name" {
-  value = module.www.www_static_bucket_name
+  root_domain             = local.root_domain
+  cloudflare_account_id   = var.cloudflare_account_id
+  cloudflare_root_zone_id = cloudflare_zone.root_zone.id
 }
 
 output "cloudflare_zone_id" {
   value = cloudflare_zone.root_zone.id
+}
+
+output "cloudflare_www_pages_project_name" {
+  value = module.www.www_pages_project_name
 }
