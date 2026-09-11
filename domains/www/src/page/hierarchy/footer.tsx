@@ -1,4 +1,4 @@
-import { THIS_SITES_REPO_URL } from "#/site/navigation";
+import { RSS_XML_PATH, THIS_SITES_REPO_URL } from "#/site/navigation";
 
 const ICON_CX = "size-[28px] fill-current text-sps-fg-light";
 
@@ -17,7 +17,7 @@ export function Footer() {
         </p>
       </div>
       <div class="flex items-center justify-end gap-4">
-        <a target="_blank" href="/rss.xml">
+        <a target="_blank" href={RSS_XML_PATH}>
           <svg
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"

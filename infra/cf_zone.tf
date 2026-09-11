@@ -35,6 +35,12 @@ resource "cloudflare_zone_setting" "browser_check" {
   value      = "off"
 }
 
+resource "cloudflare_zone_setting" "email_obfuscation" {
+  zone_id    = cloudflare_zone.root_zone.id
+  setting_id = "email_obfuscation"
+  value      = "off"
+}
+
 resource "cloudflare_zone_setting" "http3" {
   zone_id    = cloudflare_zone.root_zone.id
   setting_id = "http3"

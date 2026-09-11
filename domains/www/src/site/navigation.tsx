@@ -5,6 +5,7 @@ import { pageRoutes } from "virtual:file-routes";
 export const Router = createRouter({ routes: fileRoutes(pageRoutes) });
 
 export const THIS_SITES_REPO_URL = "https://github.com/dairyisscary/spookysoftware.dev";
+export const RSS_XML_PATH = "/rss.xml";
 
 export const { paths } = Router;
 
